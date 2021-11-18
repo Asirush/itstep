@@ -1,8 +1,8 @@
 .vscode
-lesson1/.vs
+
 .vs
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
-lesson2/Debug
+/lesson2/Debug
