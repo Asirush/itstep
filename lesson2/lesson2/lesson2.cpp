@@ -6,12 +6,51 @@ using namespace std;
 int main()
 {
 //	cout << R"(\t\n)" << endl; // how to output \t \n or any of this, if you need to output )", user R"x()x"
+/*
+	int целочисленный тип данных ------------------------------- 4 bytes
+	float числа с плавающей точкой ----------------------------- 4 bytes 
+	double большее значение, чем float ------------------------- 8 bytes 
+	char символы   --------------------------------------------- 1 byte 
+	bool логический (true/false)
+	wchar_t расширенный, для другой кодировки символов
 
-	
-	
-	
-	
-	
+	using followed keys to work with variables
+	short ------------------------------------------------------ 2 bytes 
+	long ------------------------------------------------------- 4 bytes
+	long long -------------------------------------------------- 8 bytes 
+	long double ------------------------------------------------ 16 bytes
+	signed  (-128)
+	usigned (128) ---------------------------------------------- 2 bytes
+*/
+/*	const int a2 = 2;
+	int a = 1;
+	a = 3;	
+	cout << a << endl;
+*/
+/*
+	float a = 1.123456789101112131415161718192021222324252627282930;
+	double b = 1.123456789101112131415161718192021222324252627282930;
+	long double c = 1.123456789101112131415161718192021222324252627282930;
+	cout << a << endl << b << endl << c << endl;
+*/
+/*
+	char a = 'c';
+	cout << a << endl;
+	bool b = true;
+	cout << b << endl;
+*/
+
+//simple calculator
+	int a, b;
+	float c;
+	cout << "input your first number: ";
+	cin >> a;
+	cout << endl << "input your second number:";
+	cin >> b;
+	c = a / b;
+	cout << endl << "summ:" << a + b << endl << "subtraction: " << a - b << endl << "multiplication: " << a * b << endl << "subtraction: " << c << endl;
+
+
 	return 0;
 }
 
