@@ -1,11 +1,14 @@
 ﻿#include <iostream>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
 int main()
 {
+	setlocale(LC_ALL, "Russian");
 //	cout << R"(\t\n)" << endl; // how to output \t \n or any of this, if you need to output )", user R"x()x"
+
 /*
 	int целочисленный тип данных ------------------------------- 4 bytes
 	float числа с плавающей точкой ----------------------------- 4 bytes 
@@ -41,6 +44,7 @@ int main()
 */
 
 //simple calculator
+/*
 	int a, b;
 	float c;
 	cout << "input your first number: ";
@@ -49,8 +53,14 @@ int main()
 	cin >> b;
 	c = a / b;
 	cout << endl << "summ:" << a + b << endl << "subtraction: " << a - b << endl << "multiplication: " << a * b << endl << "subtraction: " << c << endl;
-
-
+*/
+//starting tasks
+	float L, S, R;
+	cout << "введите радиус окружности:" << endl;
+	cin >> R; cout << endl;
+	L = 2 * 3.14 * R;
+	S = 3.14 * R * R;
+	cout << "длина окружности равна: " << L << endl << "площадь окружности равна:" << S << endl;
 	return 0;
 }
 
