@@ -22,7 +22,7 @@ int main()
     cout << "Asir" << "\a" << endl << endl;                 // makes sound 
     cout << "Asir" << endl << endl;
    */
-   
+   /*
    cout <<"\t" << 1<< endl;
    cout <<"\t\t" << 2<< endl; 
    cout <<"\t\t\t" << 3<< endl; 
@@ -32,7 +32,16 @@ int main()
    cout <<"\t\t\t\t\t\t\t" << 7<< endl; 
    cout <<"\t\t\t\t\t\t\t\t" << 8<< endl; 
    cout <<"\t\t\t\t\t\t\t\t\t" << 9<< endl; 
-   
+   */
+    cout << "      /\\        /-----\\       -----------   |----\\" << endl;
+    cout << "     /  \\      |                   |        |     |" << endl;
+    cout << "    /    \\      \\                  |        |     |" << endl;
+    cout << "   /------\\      \\ ---- \\          |        |----/" << endl;
+    cout << "  /        \\             |         |        |    \\" << endl;
+    cout << " /          \\            /         |        |     \\" << endl;
+    cout << "/            \\   \\------/     ------------  |      \\" << endl;
+
+
    
  
    
