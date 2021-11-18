@@ -55,12 +55,29 @@ int main()
 	cout << endl << "summ:" << a + b << endl << "subtraction: " << a - b << endl << "multiplication: " << a * b << endl << "subtraction: " << c << endl;
 */
 //starting tasks
-	float L, S, R;
-	cout << "введите радиус окружности:" << endl;
+/*	float L, S, R;
+	cout << "введите радиус окружности: " << endl;
 	cin >> R; cout << endl;
 	L = 2 * 3.14 * R;
 	S = 3.14 * R * R;
-	cout << "длина окружности равна: " << L << endl << "площадь окружности равна:" << S << endl;
+	cout << "длина окружности равна: " << L << endl << "площадь окружности равна: " << S << endl;
+*/
+	float x, a, y, b;
+	cout << "введите колличество киллограм конфет: ";
+	cin >> x;
+	cout << endl << "введите стоимость " << x << " киллограм конфет: ";
+	cin >> a;
+	cout << "стоимость одного киллограма конфет равна: " << a / x << endl << endl;
+	cout << "введите колличество киллограм ирисок: ";
+	cin >> y;
+	cout << endl << "введите стоимость " << y << " киллограм ирисок: ";
+	cin >> b;
+	cout << "стоимость одного киллограма ирисок равна: " << b / y << endl << endl;
+
+
+
+
+
 	return 0;
 }
 

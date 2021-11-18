@@ -1,4 +1,2 @@
 ﻿  lesson2.cpp
-C:\Users\АбдухаликовА\Documents\itstep\lesson2\lesson2\lesson2.cpp(61,15): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\АбдухаликовА\Documents\itstep\lesson2\lesson2\lesson2.cpp(62,15): warning C4244: =: преобразование "double" в "float", возможна потеря данных
   lesson2.vcxproj -> C:\Users\АбдухаликовА\Documents\itstep\lesson2\lesson2\Debug\lesson2.exe
