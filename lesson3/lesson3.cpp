@@ -65,6 +65,7 @@ int main()
 	cout << "введите действие: "; cin >> fight; cout << endl;
 	cout << "введите первое число: "; cin >> b; cout << endl;
 
+	if (b == 0 && fight == '/') { cout << "результат равен: ошибка, на ноль делить нельзя" << endl; }
 	if (fight == '+') { cout << "результат равен: " << a + b << endl; }
 	if (fight == '-') { cout << "результат равен: " << a - b << endl; }
 	if (fight == '*') { cout << "результат равен: " << a * b << endl; }
