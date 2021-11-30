@@ -17,6 +17,7 @@ int main()
 	else if (a >= 9 && a <= 11) { cout << "Время года - осень" << endl; }
 	*/
 	//task1
+	/*
 	//счастливый билет - сумма первых трех чисел равен сумме второй троицы
 	int n1, n2, n3, n4, n5, n6, input_n1;
 	cout << "Введите номер билета: "; cin >> input_n1; cout << endl;
@@ -29,6 +30,9 @@ int main()
 	//cout << n1 << endl <<n2 << endl <<n3 << endl <<n4 << endl <<n5 << endl <<n6<< endl;
 	if ((n1 + n2 + n3) == (n4 + n5 + n6)) { cout << "Поздравляем! Ваш билет счастливый!" << endl; }
 	else { cout << "Сегодня Вам не повезло(((" << endl; }
+	*/
+	//task2
+
 
 	cin >> end;
 	return 0;
