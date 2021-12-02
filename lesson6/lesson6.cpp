@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <math.h>
+#include <cmath>
 
 using namespace std;
 
@@ -7,8 +9,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	int end;
 //task 1
-	/*
-	int hh, mm, hh_in, mm_in, hh_out, mm_out, days, last_hh, last_mm;
+/*  int hh, mm, hh_in, mm_in, hh_out, mm_out, days, last_hh, last_mm;
 	cout << "Введите время начала пути: "; cin >> hh >> mm; cout << endl;
 	cout << "Введите количество часов и минут в пути: ";  cin >> hh_in >> mm_in; cout << endl;
 
@@ -31,20 +32,22 @@ int main()
 	}
 	cout << "Время по приезде: " << hh_out << ":" << mm_out << endl;
 	cout << "Суток прошло: " << days << endl << "Остаточных часов и минут: "<< last_hh << ":"<< last_mm<<endl;
-	*/
-//100 20 50
+*/
 //task 2
-	int N, i, j, out;
+/*	int N, i, j, out;
 	cout << "Введите первое количество станций в ветке: "; cin >> N; cout << endl;
 	cout << "Введите номер станции посадки Вити: "; cin >> i; cout << endl;
 	cout << "Введите Номер станции выхода Вити: "; cin >> j; cout << endl;
 
-	if (i < j && ((j - i) <= N / 2)) { out = j-i; }
-	if (i > j && ((i - j) <= N / 2)) { out = i-j; }
-	if (i < j && ((j - i) > N / 2)) { out = N - j + i; }
-	if (i > j && ((i - j) > N / 2)) { out = N - i + j; }
+	if (i < j && ((j - i) <= N / 2)) { out = j-i - 1; }
+	else if (i > j && ((i - j) <= N / 2)) { out = i-j - 1; }
+	else if (i < j && ((j - i) > N / 2)) { out = N - j + i - 1; }
+	else if (i > j && ((i - j) > N / 2)) { out = N - i + j - 1; }
 
 	cout << "Количество станций равно: " << out << endl;
+*/
+//task 3
+
 
 	cin >> end;
 	return 0;
