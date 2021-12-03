@@ -46,8 +46,18 @@ int main()
 
 	cout << "Количество станций равно: " << out << endl;
 */
-//task 3
-
+//homework
+	int k1, m1, k2, m2, out1, out2;
+	double l1, l2;
+	cin >> k1 >> l1 >> m1; cout << endl;
+	if ((k1 >= 100 && k1 <= 30000 && k1%100 == 0) && (l1 <= 100 && l1 >= 0) && (m1 >= 1 && m1 <= 100)) {
+		out1 = k1 * (l1 / 100) * m1;
+	}
+	cin >> k2 >> l2 >> m2; cout << endl;
+	if ((k2 >= 100 && k2 <= 30000 && k2 % 100 == 0) && (l2 <= 100 && l2 >= 0) && (m2 >= 1 && m2 <= 100)) {
+		out2 = k2 * (l2 / 100) * m2;
+	}
+	cout << "убытки склада 1:" << out1 << endl << "убытки склада 2:" << out2<<endl;
 
 	cin >> end;
 	return 0;
