@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include <Windows.h>
 
 using namespace std;
 
@@ -34,7 +33,7 @@ int main()
 	}
 	*/
 	//task2
-	
+	/*
 		int low = 1, high = 100, i;
 		bool isPrime = true;
 
@@ -57,7 +56,17 @@ int main()
 
 			++low;
 		}
+	*/
+	//task3
 
+	int n = 9;
+
+	for (int i=1; i <= n; i++) {
+		for (int j=1; j <= i; j++) {
+			cout << j;
+		}
+		cout << endl;
+	}
 
 
 	cin >> end;
