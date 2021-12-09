@@ -45,7 +45,7 @@ int main()
         cout << endl;
     }*/
 //task 2
-    int count, high, m1, m2, m3;
+/*   int count, high, m1, m2, m3;
     
     cin >> count;
     if (count == 1) {
@@ -61,10 +61,19 @@ int main()
     }
     if (count == 3) {
         cin >> m1 >> m2>>m3;
-        if (m1 >= 427) { cout << "crash 1"; }
+        if (m1 <= 427) { cout << "crash 1"; }
         else if (m2 <= 427) { cout << "crash 2"; }
         else if (m3 <= 427) { cout << "crash 3"; }
         else if (m1 > 427 && m2 > 427&&m3>427) { cout << "no crash"; }
+    }
+*/ 
+//task 3
+    int P, N;
+    cout << "введите стоимость: "; cin >> P; cout << endl;
+    cout << "введите количество кг: "; cin >> N; cout << endl;
+
+    for (int i = 1; i <= N; i++) {
+        cout << i << " киллограм стоит: " << P * i << endl;
     }
 
 
