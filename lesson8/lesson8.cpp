@@ -48,18 +48,18 @@ int main()
     int count, high, m1, m2, m3;
     
     cin >> count;
-    if (count = 1) {
+    if (count == 1) {
         cin >> m1;
         if (m1 <= 427) { cout << "crash 1" << endl; }
         else { cout << "no crash"; }
     }
-    if (count = 2) {
+    if (count == 2) {
         cin >> m1 >> m2;
         if (m1 <= 427) { cout << "crash 1"; }
         else if (m2 <= 427) { cout << "crash 2"; }
         else if (m1 > 427 && m2 > 427) { cout << "no crash"; }
     }
-    if (count = 3) {
+    if (count == 3) {
         cin >> m1 >> m2>>m3;
         if (m1 >= 427) { cout << "crash 1"; }
         else if (m2 <= 427) { cout << "crash 2"; }
