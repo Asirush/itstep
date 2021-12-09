@@ -6,8 +6,9 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	int N, flag, j = 0;
+
 //task 1
+	int N, flag;
     cout << "Enter number of rows: ";
     cin >> N;
 
