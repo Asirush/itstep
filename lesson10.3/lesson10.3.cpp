@@ -46,7 +46,24 @@ int main()
 	else { cout << "error incorresct N" << endl; }
 */
 //task 3
+/*
+	int A, B, C, T, limit, without, summ = 0, over;
+	cout << "Введите лимит минут в месяц: "; cin >> A;
+	cout << "Введите стоимость разговора в минуту в лимите: "; cin >> B;
+	cout << "Введите стоимость разговора в минуту вне лимита: "; cin >> C;
+	cout << "Введите кол-во минут: "; cin >> T;
 
-
+	if (A < 1000 && B < 1000 && C < 1000 && T < 1000) {
+		if (T > A) {
+			summ += A * B;
+			summ += (T - A) * C;
+		}
+		else {
+			summ += T * B;
+		}
+		cout << "Итоговая сумма: " << summ << endl;
+	}
+	else { cout << "error, incorrect data input" << endl; }
+*/
 	return 0;
 }
