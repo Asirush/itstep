@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
+	//setlocale(LC_ALL, "Russian");
 //task 1
 /*
 	double x, y, days = 1;
