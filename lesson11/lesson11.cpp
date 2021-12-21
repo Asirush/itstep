@@ -48,6 +48,8 @@ int main()
 	}
 	cout << "Maximum: " << max << endl << "Minimum: " << min << endl;
 */
+//task 3
+/*
 	int n, g, age, max=0, countmax=0;
 	cout << "человек: " << endl;
 	cin >> n;
@@ -66,6 +68,24 @@ int main()
 		}
 		cout << "oldest man has age: " << max << endl << "count of sameage pepole: " << countmax;
 	}
+*/
+//task 4
+
+	int temp, days, i=0, counter =0, previostemp;
+	cout << "enter count of days: "; cin >> days;
+	while (i < days) {
+		cout << "temp for day " << i + 1 << " "; cin >> temp;
+		if (temp > 0) {
+			previostemp = temp;
+			counter++;
+		}
+		else {
+			previostemp = temp;
+			counter = 0;
+		}
+		i++;
+	}
+	cout << "count of warm days is: " << counter<<endl;
 
 	return 0;
 }
