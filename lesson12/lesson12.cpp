@@ -1,11 +1,12 @@
 ﻿#include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	//task1 
+	//task 1 
 	/*
 	int N, i=1, temp, count_of_warm_days=0, coldest_day, counter=1;
 	cin >> N;
@@ -67,8 +68,48 @@ int main()
 			}
 		}
 	*/
+	
+	//arrays
+	srand(time(0));
+	
+	unsigned int A[16], B[16];
+	int max = 0, min = 0, summ=0;
+	
+	for (int i = 0; i < 16; i++) {
+		A[i] = rand() % 10;	
+		cout << A[i] << ", ";
+	}
+	cout << endl;
 
-
-
+	for (int j = 0; j < 16; j++) {
+		/*if (j = 0) {
+			max = A[j];
+			min = A[j];
+		}
+		else {*/
+			if (A[j] > max) {
+				max = A[j];
+			}
+			else if (A[j] < min) {
+				min = A[j];
+			}
+			else if (A[j] = max) {
+				max = A[j];
+			}
+			else if (A[j] = min) {
+				min = A[j];
+			}
+			summ += A[j];
+			
+		
+	}
+	for (int i = 0; i < 16; i++) {
+		if (A[i] % 2 == 1) {
+			B[i] == A[i];
+		}
+	}
+	cout << "max: " << max << endl << "min: " << min << endl<<"sum: "<<summ<<endl<<"numbers: ";
+	
+	cout << endl;
 	return 0;
 }
