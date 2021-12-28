@@ -7,6 +7,8 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	srand(time(0));
+
+	//previous_lesson_task
 	/*
 	//arrays
 	srand(time(0));
@@ -71,7 +73,7 @@ int main()
 	}
 	cout << endl;*/
 	//taxes_task
-	int N, V[100], counter = 0, persent = 0;
+	/*int N, V[100], counter = 0, persent = 0;
 	double B[100], max = 0;
 	//income
 	cout << "count of companies: ";
@@ -98,6 +100,7 @@ int main()
 			}
 	}
 	cout <<endl<< "max: " << counter << endl<<"value: "<<max<<endl;
+	*/
 
 	cout << endl;
 	return 0;
