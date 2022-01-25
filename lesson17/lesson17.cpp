@@ -11,12 +11,12 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
+	//setlocale(LC_ALL, "Russian");
 	srand(time(0));
 
 	//task1
 
-    char a[10] = { '.','.','.','.','.','.','.','.','.','.'};
+/*    char a[10] = {'.','.','.','.','.','.','.','.','.','.'};
     int S, H;
     for (int i = 1; i <= 9; i++) {
         cout << "Ход крестиков\n";
@@ -117,7 +117,34 @@ int main()
         Sleep(2000);
         system("cls");
 
+    }*/
+
+
+    //task2 
+    
+    int a[15][20];
+
+    for (int i = 0; i < 15; i++)
+    {
+        for (int j = 0; j < 20; j++) {
+            a[i][j] = rand() % 2 + 1;
+        }
+
     }
+
+    for (int i = 0; i < 15; i++)
+    {
+        for (int j = 0; j < 20; j++) {
+            if (a[i][j] == 1) { cout << " "; }
+            else cout << char(254);
+        }
+        cout << endl;
+    }
+
+
+    //task3
+
+
 
 	return 0;
 }
