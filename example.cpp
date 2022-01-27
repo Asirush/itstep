@@ -1,44 +1,34 @@
 #include <iostream>
+#include <stdlib.h>
+#include <Windows.h>
+
+/*
+Sleep(2000);
+system("cls");
+*/
 
 using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-//homework - task1
-	/*
-	for (int i = 100; i <= 999; i++) {
-		if (i/100 == (i % 10) || i/100 == (i%100 - i%10) || i%10 == (i%100 - i%10)) {
-			cout <<endl<< i;
-		}
-	}
-	cout << endl;
-	*/
-//homework - task 2
-	/*
-	int counter = 899;
-	for (int i = 100; i <= 999; i++) {
-		if (i / 100 == (i % 10) || i / 100 == (i % 100 - i % 10) || i % 10 == (i % 100 - i % 10)) {
-			counter--;
-		}
-	}
-	cout << endl << counter << endl;;
-	*/
-//homework - task 3
-	/*
-	int r = 0, N;
-	cin >> N;
+    //setlocale(LC_ALL, "Russian");
+    srand(time(0));
+    //= rand() % 2 + 1;
 
-		while (N != 0) {
-			r = N % 10;
-			N = N / 10;
-			if (r == 3 || r == 6) {
-				
-			}
-			else {
-				cout << r;
-			}
-		}
-	*/
-	return 0;
+    int a[10][10];
+    cin >> M >> N;
+
+    for (int i = 0; i < M; i++) {
+        cout << i << ")";
+        for (int j = 0; j < N; j++) {
+            a[i][j] = rand() % 2 + 1;
+            cout << a[i][j];
+        }
+        cout << endl;
+    }
+
+
+
+    return 0;
 }
+

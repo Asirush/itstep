@@ -134,11 +134,15 @@ int main()
 
     for (int i = 0; i < 15; i++)
     {
+        int counter = 0;
         for (int j = 0; j < 20; j++) {
-            if (a[i][j] == 1) { cout << " "; }
-            else cout << char(254);
+            
+            if (a[i][j] == 1) { cout <<" "; }
+            else {
+                cout << char(254); counter++;
+            }
         }
-        cout << endl;
+        cout << " "  << counter << endl;
     }
 
 
