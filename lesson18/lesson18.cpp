@@ -9,7 +9,6 @@ system("cls");
 
 using namespace std;
 
-
 int main()
 {
     //setlocale(LC_ALL, "Russian");
@@ -56,18 +55,17 @@ int main()
 
 //task3
     int N, keyboard[20], a[20][50];
-
+     
     N = rand() % 16 + 5;
 
     for  (int i = 0; i < N; i++)
     {
-        keyboard[i] = rand() % 51 + 10;
+        keyboard[i] = rand() % 41 + 10;
     }
-
-
 
 
 
     return 0;
 }
 
+// range = rand()%(max - min + 1) + min;
