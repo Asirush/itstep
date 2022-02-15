@@ -89,7 +89,7 @@ int maxel(int n; int array[];) {
 
     return max, min, ;
 }
-
+//hello
 int main() {
     cout << "Enter your array: " << endl;
     int array[10];
