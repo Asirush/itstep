@@ -72,7 +72,7 @@ int main() {
     return 0;
 }*/
 
-int maxel(int n; int array[]) {
+int maxel(int n; int array[];) {
     max = array[0];
     int max, min, mxnumber, mnnumber;
     for (int i = 0; i < n; i++) {
