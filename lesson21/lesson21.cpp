@@ -1,20 +1,102 @@
-﻿// lesson21.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <stdlib.h>
+#include <Windows.h>
 
-#include <iostream>
+/*
+Sleep(2000);
+system("cls");
+*/
+
+using namespace std;
+
+/*
+string words(string a, string b) {
+    return a + " " + b;
+}
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    string word1, word2;
+    cin >> word1 >> word2;
+    cout << words(word1, word2) <<endl;
+
+    return 0;
+}
+*/
+/*
+string counter(string location, int count_of_trips) {
+    int flag = 0;
+    string current_place;
+    //Home - 1
+    //School - 2
+    
+
+    if (location == "Home") {
+        for (int i = count_of_trips; i >= 1; i--) {
+            if (count_of_trips % 2 == 0) { current_place = "Home"; }
+            else { current_place = "School"; }
+        }
+        
+        
+    }
+    else {
+        for (int i = count_of_trips; i >= 1; i--) {
+            if (count_of_trips % 2 == 1) { current_place = "Home"; }
+            else { current_place = "School"; }
+        }
+    }
+    return "Вы находитесь: " + current_place + ". Поездок осталось: 0.";
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
+int main() {
+    setlocale(LC_ALL, "Russian");
 
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+    string word; int count; 
+    cout << "Input where you are and how many trips you have in one card? "; cin >> word >> count;
+    int days = count / 2;
+    cout << counter(word, count) << " Дней пройдено " << days << endl;
+    return 0;
+}*/
+/*
+bool isunsigned(int a) {
+    if (a > 0) { return true; }
+    else { return false; }
+}
+
+int main() {
+    int a;
+    cin >> a;
+    cout << isunsigned(a) << endl;
+
+    return 0;
+}*/
+
+int maxel(int n; int array[]) {
+    max = array[0];
+    int max, min, mxnumber, mnnumber;
+    for (int i = 0; i < n; i++) {
+        if (array[i] > max) {
+            max = array[i];
+            mxnumber = i;
+        }
+        if (array[i] < min) {
+            min = array[i];
+            mnnumber = i;
+        }
+
+    }
+
+    return max, min, ;
+}
+
+int main() {
+    cout << "Enter your array: " << endl;
+    int array[10];
+    for (int i = 0; i <= 10; i++) {
+        cout << "number " << i + 1; cin >> array[i];
+    }
+    cout << maxel(int 10; array[10])
+
+    return 0;
+}
