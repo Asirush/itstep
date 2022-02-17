@@ -109,29 +109,33 @@ int mass_input(int a) {
 }
 
 int return_mass(int mass[]) {
-    cout << endl;
     for (int i = 0; i < 10; i++) {
         cout << mass[i] << " ";
     }
+    cout << endl;
     return 0;
 }
 
 int filter_once(int mass[]) {
     for (int i = 0; i < 10; i++) {
-        int min = mass[i];
-        for (int j = 0; j < 10; j++) {
-            if (mass[i] < min) return min = mass[i];
+        for (int j = 0; j < 9; j++) {
+            if (mass[j+1] < mass[j]) {
+                int tmp = mass[j];
+                mass[i] = mass[i + 1];
+                mass[i + 1] = tmp;
+            }
         }
     }
+    return 0;
 }
 
 int main() {
     for(int i =0; i < 10; i++) mass_input(i);
-    cout << return_mass(mass);
+    cout << return_mass(mass)<<endl;
     for (int i = 0; i < 9; i++) {
-        cout << i << "  ";
+        cout << i+1 << "  ";
         return_mass(mass);
-        filter_once(mass);
+        mass[i] = filter_once(mass);
     }
 
 
