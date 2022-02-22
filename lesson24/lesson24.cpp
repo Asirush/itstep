@@ -40,15 +40,18 @@ void calculator(int* a, char* b, int* c) {
     cout << result;
 }
 
-int summ(int a[5]) {
+void summ(int a[5], int i) {
     int *place;
-    place = &a[0];
+    place = &a[i];
     int summ=0;
     for (int i = 0; i < 5; i++) {
-        
         summ += *(place + i);
     }
-    return summ;
+    //return summ;
+}
+
+void summ_mass(int a, int b) {
+    //for ();
 }
 
 int main() {
@@ -83,13 +86,36 @@ int main() {
     int* pa = &a, * pb = &b; char* sym = &symbol;
     calculator(pa, sym, pb);*/
     //task 5
-    int mass[5];
+    /*int mass[5];
     for (int i = 0; i < 5; i++) {
         mass[i] = rand() % 9 + 1;
         cout << "mass[" << i+1 << "] = " << mass[i] << endl;
     }
-    
-    cout << summ(mass);
-    
+    cout << summ(mass);*/
+    //task6
+    int a[100], b[100], c[200];
+    int m, n;
+    cin >> m >> n;
+
+    int* pa = &a[0];
+    int* pb = &b[0];
+    cout << "mass a:" << endl;
+    for (int i = 0; i < m; i++) {
+        a[i] = rand()%9+1;
+        cout << a[i] << " ";
+    }
+    cout << endl;
+    cout << "mass b:" << endl;
+    for (int i = 0; i < n; i++) {
+        b[i] = rand() % 9 + 1;
+        cout << b[i] << " ";
+    }
+    cout << endl;
+    cout << "mass c:" << endl;
+    for (int i = 0; i < m + n; i++) {
+        if (i < m) { c[i] = *(pa + i); }
+        else if (i >= m) { c[i] = *(pb + (i-m)); }
+        cout << c[i] << " ";
+    }
     
     }
