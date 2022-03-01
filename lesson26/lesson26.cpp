@@ -7,35 +7,35 @@ using namespace std;
 /*
 int main()
 {
-	char* pmessage;
-	char name[]="Hello World!";
-	pmessage = name;
+    char* pmessage;
+    char name[]="Hello World!";
+    pmessage = name;
 
-	int i = 0;
+    int i = 0;
 
-	while (*(pmessage + i) != '\0') {
-		cout << *(pmessage + i);
-		i++;
-	}
+    while (*(pmessage + i) != '\0') {
+        cout << *(pmessage + i);
+        i++;
+    }
 
 }*/
 /*
 int main()
 {
-	char del;
-	char* pmessage;
-	char name[] = "Hello World!";
-	pmessage = name;
+    char del;
+    char* pmessage;
+    char name[] = "Hello World!";
+    pmessage = name;
 
-	int i = 0;
+    int i = 0;
 
-	cout << "enter letter u wanna delete: "; cin >> del;
+    cout << "enter letter u wanna delete: "; cin >> del;
 
-	while (*(pmessage + i) != '\0') {
-		if (*(pmessage + i) != del)cout << *(pmessage + i);
+    while (*(pmessage + i) != '\0') {
+        if (*(pmessage + i) != del)cout << *(pmessage + i);
 
-		i++;
-	}
+        i++;
+    }
 }*/
 
 int main()
