@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <cmath>
+#include <windows.h>
+#include <string.h>
 
 using namespace std;
 
@@ -37,7 +39,7 @@ int main()
         i++;
     }
 }*/
-
+/*
 int main()
 {
     char del;
@@ -67,4 +69,38 @@ int main()
         cout << endl;
     }
 
+}*/
+/*
+int main()
+{
+    char quote[] = "Ya ustal, hocju v kino";
+    char* pq = quote;
+
+    cout << sizeof(quote) << endl << strlen(pq) + 1 << endl;
+}*/
+
+int main() {
+    char q[30];
+    char* pq = q;
+    char b[100];
+    char* pb = b;
+    int space;
+    int* ps = &space;
+    int flag = 0;
+
+    for (int i = 0; i < 30; i++) {
+        *ps = rand() % 5;
+        if(*ps == 1){ pq[i] = char(32); }
+        else {
+            pq[i] = char(rand() % 26 + 65); //внутри char получаем рандомное значение
+        }
+        cout << pq[i];
+    }
+    cout << endl << endl;
+    for (int i = 0; i < 30; i++) {
+        if (pq[i] == char(32)) { pb[i] = char(9);}
+        cout << pq[i];
+     //   else { if (flag == 0)pb[i] = pq[i]; else if (flag > 0) { pb[i * flag] = pb[i]; } }
+     //   cout << pq[i];
+    }
 }
