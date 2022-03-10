@@ -5,51 +5,80 @@
 
 using namespace std;
 
-static int a, b;
+/*
+struct date {
+	int day;
+	int month;
+	int year;
+};
 
-void entering(int mass[], int c) {
-	for (int i = 0; i < c; i++) {
-		mass[i] = rand() % 5 + 1;
-	}
+
+int main() {
+	date MyBirthday = { 20, 10, 1990 };
 }
 
-void show_array(int mass[], int c) {
-	for (int i = 0; i < c; i++) {
-		cout << mass[i] << " ";
-	}cout << endl;
-}
+*/
 
-void two_mass_integration(int parray1[], int parray2[]) {
+// task 2
+/*
+struct my_group {
+	char name[100];
+	int age;
+	int groupid;
+	double avg_score;
+};
 
-	int* parray3 = new int[a + b];
 
-	for (int i = 0; i < a + b; i++) {
-		if (i < a) {
-			parray3[i] = parray1[i];
-		}
-		else {
-			parray3[i] = parray2[i - a];
-		}
-	}
-	show_array(parray3, a + b);
-}
+int main() {
+	my_group berik = { "Berikzhan", 20, 5, 6.5 };
+	cout << berik.name << " " << berik.age << endl;
+
+	my_group amir;
+	cout << "Your age? "; cin >> amir.age; cout << endl;
+	cout << "Your group id? "; cin >> amir.groupid; cout << endl; 
+
+}*/
+
+// task 3
+
+struct shared_parametrs {
+	char company[100];
+	int power;
+};
+
+struct wash_mashine {
+	shared_parametrs parametrs;
+	char colour[100];
+	int width;
+	int length;
+	int high;
+	int spin_speed;
+	int heating_temperatures;
+};
+
+struct flatiron {
+	shared_parametrs parametrs;
+	char model[100];
+	int min_tmp;
+	int max_tmp;
+	bool steam;
+};
+
+struct boiler {
+	shared_parametrs parametrs;
+	char colour[50];
+	int value;
+	int heating_temperatures;
+};
 
 int main() {
 
+	wash_mashine bosch_washmashine = { "Bosch",5000, "red", 45, 30, 50, 3000, 90};
+	cout <<"Washmashine rpm = " << bosch_washmashine.parametrs.power << endl;
 
-	cout << "enter arrays values: "; cin >> a >> b;
+	flatiron bosch_flatiron = { "Bosch", 3000, "flatiron 2000", 30, 150, true};
+	cout << "Washmashine power = " << bosch_flatiron.parametrs.power << endl;
 
-	int* array1 = new int[a];
-	int* array2 = new int[b];
-
-	entering(array1, a);
-	entering(array2, b);
-	show_array(array1, a);
-	show_array(array2, b);
-
-	two_mass_integration(array1, array2);
-	delete[]array1;
-	delete[]array2;
-
-	return 0;
+	boiler bosch_boiler = { "Bosch", 3000, "red", 5, 90 };
+	cout << "Washmashine power = " << bosch_flatiron.parametrs.power << endl;
 }
