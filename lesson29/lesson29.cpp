@@ -150,7 +150,7 @@ void fill_map(char mass[10][10], string map_name) {
 	
 
 }
-//player select where to put ships
+//player select where to put ships 1
 
 int main() {
 	char mass1[10][10], mass2[10][10];
