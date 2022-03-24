@@ -8,7 +8,8 @@ using namespace std;
 
 char mass1[10][10], mass2[10][10];
 string map_name1, map_name2;
-char* pmass = &mass2[0][0];
+char* pmass1 = &mass1[0][0];
+char* pmass2 = &mass2[0][0];
 
 bool start_menu() {
 	char status;
@@ -81,7 +82,7 @@ int select_mode() {
 
 void ship4(char* f) {
 	//Получаем случайную ориентацию 4-ного корабля
-	bool hororien = 1;
+	bool hororien = rand() % 2;
 	//Получаем случайные координаты х и y для 4-ного корабля c учетом случаной ориентации
 	int x;
 	// Переменная-флаг которая даст сигнал о том, что все 18 клеток успешно прошли проверку
@@ -149,7 +150,7 @@ void ship4(char* f) {
 	else if (hororien == false) {
 		do {
 			fourfree = 1;
-			x = rand() % 100;// Случайный адрес от 0 до 99
+			x = rand() % 70;// Случайный адрес от 0 до 69
 			for (int i = x - 11; i <= x - 9; i++) {
 				if (f[i] == char(223)) {
 					fourfree = 0;
@@ -188,58 +189,226 @@ void ship4(char* f) {
 	}
 }
 void ship3(char* f) {
-	//Получаем случайную ориентацию 4-ного корабля
+	//Получаем случайную ориентацию 3-ного корабля
 	bool hororien = rand() % 2;
-	//Получаем случайные координаты х и y для 4-ного корабля c учетом случаной ориентации
-	int x, y;
-	// Переменная-флаг которая даст сигнал о том, что все 18 клеток успешно прошли проверку
-	int fourfree = 1;
+	//Получаем случайную координату х  для 3-ного корабля c учетом случайной ориентации
+	int x;
+	// Переменная-флаг которая даст сигнал о том, что все 15 клеток успешно прошли проверку
+	int threefree = 1;
+	int xthreecorrect = 1;
 	if (hororien == true) {
-		// Проверяем 18 свободных клеток для 4-ного горизонтального корабля
+		// Проверяем 15 свободных клеток для 3-ного горизонтального корабля
 		do {
-			x = rand() % 10;// Случайная строка от 0 до 9
-			y = rand() % 8; // Случайный столбик от 0 до 7
-			for (int i = x - 1; i < x + 2; i++) {
-				for (int j = y - 1; j < y + 4; j++) {
-					if (f[i][j] == char(223)) {
-						fourfree = 0;
+			threefree = 1;
+
+			// Проверка x на корректность 
+
+			do {
+				//Переменная для статуса корректного x
+				xthreecorrect = 1;
+				x = rand() % 100;// Случайный адрес от 0 до 99
+
+				//Проверяем не выпали ли числа 8, 18, 28 ... 98
+				for (int i = 8; i <= 98; i = i + 10) {
+					if (x == i) {
+						xthreecorrect = 0;
 						break;
 					}
-					else {
-						fourfree = 1;
+				}
+				//Проверяем не выпали ли числа 9, 19, 29 ... 99
+				for (int i = 9; i <= 99; i = i + 10) {
+					if (x == i) {
+						xthreecorrect = 0;
+						break;
 					}
 				}
+			} while (xthreecorrect == 0);
+
+			for (int i = x - 11; i <= x - 7; i++) {
+				if (f[i] == char(223)) {
+					threefree = 0;
+				}
 			}
-		} while (fourfree == 0);
-		for (int i = y; i < y + 3; i++) {
-			f[x][i] = char(223);
+			for (int i = x - 1; i <= x + 3; i++) {
+				if (f[i] == char(223)) {
+					threefree = 0;
+				}
+			}
+			for (int i = x + 9; i <= x + 13; i++) {
+				if (f[i] == char(223)) {
+					threefree = 0;
+				}
+			}
+
+
+
+		} while (threefree == 0);
+		for (int i = x; i < x + 3; i++) {
+			f[i] = char(223);
 		}
 	}
+	// Проверка 3-ного вертикального корабля
 	else if (hororien == false) {
 		do {
-			x = rand() % 8;// Случайная строка от 0 до 9
-			y = rand() % 10; // Случайный столбик от 0 до 7
-			for (int i = x - 1; i < x + 4; i++) {
-				for (int j = y - 1; j < y + 2; j++) {
-					if (f[i][j] == char(223)) {
-						fourfree = 0;
-						break;
-					}
-					else {
-						fourfree = 1;
-					}
+			threefree = 1;
+			x = rand() % 80;// Случайный адрес от 0 до 79
+
+
+			for (int i = x - 11; i <= x - 9; i++) {
+				if (f[i] == char(223)) {
+					threefree = 0;
 				}
 			}
-		} while (fourfree == 0);
-		for (int i = x; i < x + 3; i++) {
-			f[i][y] = char(223);
+			for (int i = x - 1; i <= x + 1; i++) {
+				if (f[i] == char(223)) {
+					threefree = 0;
+				}
+			}
+			for (int i = x + 9; i <= x + 11; i++) {
+				if (f[i] == char(223)) {
+					threefree = 0;
+				}
+			}
+			for (int i = x + 19; i <= x + 21; i++) {
+				if (f[i] == char(223)) {
+					threefree = 0;
+				}
+			}
+			for (int i = x + 29; i <= x + 31; i++) {
+				if (f[i] == char(223)) {
+					threefree = 0;
+				}
+			}
+
+
+		} while (threefree == 0);
+		for (int i = x; i <= x + 20; i = i + 10) {
+			f[i] = char(223);
 		}
 	}
+}
+void ship2(char* f) {
+	//Получаем случайную ориентацию 2-ного корабля
+	bool hororien = rand() % 2;
+	//Получаем случайную координату х для 2-ного корабля c учетом случайной ориентации
+	int x;
+	// Переменная-флаг которая даст сигнал о том, что все 12 клеток успешно прошли проверку
+	int twofree = 1;
+	int xtwocorrect = 1;
+	if (hororien == true) {
+		// Проверяем 12 свободных клеток для 2-ного горизонтального корабля
+		do {
+			twofree = 1;
+
+			// Проверка x на корректность 
+
+			do {
+				//Переменная для статуса корректного x
+				xtwocorrect = 1;
+				x = rand() % 100;// Случайный адрес от 0 до 99
+
+
+				//Проверяем не выпали ли числа 9, 19, 29 ... 99
+				for (int i = 9; i <= 99; i = i + 10) {
+					if (x == i) {
+						xtwocorrect = 0;
+						break;
+					}
+				}
+			} while (xtwocorrect == 0);
+
+			for (int i = x - 11; i <= x - 8; i++) {
+				if (f[i] == char(223)) {
+					twofree = 0;
+				}
+			}
+			for (int i = x - 1; i <= x + 2; i++) {
+				if (f[i] == char(223)) {
+					twofree = 0;
+				}
+			}
+			for (int i = x + 9; i <= x + 12; i++) {
+				if (f[i] == char(223)) {
+					twofree = 0;
+				}
+			}
+
+
+
+		} while (twofree == 0);
+		for (int i = x; i < x + 2; i++) {
+			f[i] = char(223);
+		}
+	}
+	// Проверка 2-ного вертикального корабля
+	else if (hororien == false) {
+		do {
+			twofree = 1;
+			x = rand() % 80;// Случайный адрес от 0 до 89
+
+
+			for (int i = x - 11; i <= x - 9; i++) {
+				if (f[i] == char(223)) {
+					twofree = 0;
+				}
+			}
+			for (int i = x - 1; i <= x + 1; i++) {
+				if (f[i] == char(223)) {
+					twofree = 0;
+				}
+			}
+			for (int i = x + 9; i <= x + 11; i++) {
+				if (f[i] == char(223)) {
+					twofree = 0;
+				}
+			}
+			for (int i = x + 19; i <= x + 21; i++) {
+				if (f[i] == char(223)) {
+					twofree = 0;
+				}
+			}
+
+
+		} while (twofree == 0);
+		for (int i = x; i <= x + 10; i = i + 10) {
+			f[i] = char(223);
+		}
+	}
+}
+void ship1(char* f) {
+	//Получаем случайную координату х для 1-ного корабля
+	int x;
+	// Переменная-флаг которая даст сигнал о том, что все 9 клеток успешно прошли проверку
+	int onefree = 1;
+	// Проверяем 12 свободных клеток для 2-ного горизонтального корабля
+	do {
+		onefree = 1;
+		x = rand() % 100;// Координата для 1-ного корабля от 0 до 99
+		for (int i = x - 11; i <= x - 9; i++) {
+			if (f[i] == char(223)) {
+				onefree = 0;
+			}
+		}
+		for (int i = x - 1; i <= x + 1; i++) {
+			if (f[i] == char(223)) {
+				onefree = 0;
+			}
+		}
+		for (int i = x + 9; i <= x + 11; i++) {
+			if (f[i] == char(223)) {
+				onefree = 0;
+			}
+		}
+	} while (onefree == 0);
+	// Ставим одиночный кораблик
+	f[x] = char(223);
 }
 
 void rand_fill(char* pmass, string map_name) {
 	ship4(pmass);
 	ship3(pmass);
+	ship2(pmass);
+	ship1(pmass);
 }
 //ship count - type
 	//	   1 - 4
@@ -304,26 +473,16 @@ void fill_map(char mass[10][10], string map_name) {
 //player select where to put ships 1
 
 int main() {
-
-
-	//if (start_menu() == true) {
-	//	system("cls");
-	//	if (select_mode() == 1) {
-	//		system("cls");
-	//		map_name1 = players_name();
-	//		map_name2 = "bot";
-	//		gen_empty_map(mass1); gen_empty_map(mass2);
-	//		//fill_map(mass1, map_name1);
-	//		rand_fill(mass2, map_name2);
-
-	//		show_map(mass2, map_name2);
-
-	//	}
-
-
-	//}
-
-	gen_empty_map(mass2);
-	rand_fill(pmass, map_name2);
-	show_map(mass2, map_name2);
+	if (start_menu() == true) {
+		system("cls");
+		if (select_mode() == 1) {
+			system("cls");
+			map_name1 = players_name();
+			map_name2 = "bot";
+			gen_empty_map(mass1); gen_empty_map(mass2);
+			//fill_map(mass1, map_name1);
+			rand_fill(pmass2, map_name2);
+			show_map(mass2, map_name2);
+		}
+	}
 }
