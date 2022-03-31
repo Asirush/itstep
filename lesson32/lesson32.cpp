@@ -3,7 +3,7 @@
 using namespace std;
 
 string username1, username2;
-int game_mode=0;
+int game_mode=0, player1_points = 0, player2_points = 0;
 char mass1[10][10], mass2[10][10], reserve1[10][10], reserve2[10][10];
 char* m1 = &mass1[0][0];
 char* m2 = &mass2[0][0];
@@ -415,12 +415,15 @@ void game_mode_1() {
 	rand_map_gen(m2);
 
 	//game
-	while (true) {
+	while (true && player1_points<21 || player2_points<21) {
 		show_map_mode1(m1, r2, username1);
-		while (player_hit(username1, m2, r2) == true) player_hit(username1, m2, r2);
-		while (player_hit(username2, m1, m1) == true) player_hit(username2, m1, m1);
+		while (player_hit(username1, m2, r2) == true && player1_points < 20 || player2_points < 20) player_hit(username1, m2, r2); player1_points++;
+		while (player_hit(username2, m1, m1) == true && player1_points < 20 || player2_points < 20) player_hit(username2, m1, m1); player2_points++;
 	}
+	if (player1_points == 20) { system("cls"); cout << username1 << " is a winner!"; }
+	else if (player2_points == 20) { system("cls"); cout << username2 << " is a winner!"; }
 }
+
 void game_mode_2() {};
 void game_mode_3() {};
 
