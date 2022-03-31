@@ -26,7 +26,7 @@ int select_game_mode() {
 	return game_mode;
 }
 
-//mass_link; enemy_mass_link; playername;
+//             mass_link; enemy_mass_link; playername;
 void show_map_mode1(char* a, char* b, string map_name) {
 	cout << "player: " << map_name << endl;
 	cout << "  abcdefghij" << endl;
@@ -417,8 +417,8 @@ void game_mode_1() {
 	//game
 	while (true && player1_points<21 || player2_points<21) {
 		show_map_mode1(m1, r2, username1);
-		while (player_hit(username1, m2, r2) == true && player1_points < 20 || player2_points < 20)  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username1, m2, r2); player1_points++;
-		while (player_hit(username2, m1, m1) == true && player1_points < 20 || player2_points < 20)  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username2, m1, m1); player2_points++;
+		while (player_hit(username1, m2, r2) == true && (player1_points < 20 || player2_points < 20))  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username1, m2, r2); player1_points++;
+		while (player_hit(username2, m1, m1) == true && (player1_points < 20 || player2_points < 20))  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username2, m1, m1); player2_points++;
 	}
 	if (player1_points == 20) { system("cls"); cout << username1 << " is a winner!"; }
 	else if (player2_points == 20) { system("cls"); cout << username2 << " is a winner!"; }
