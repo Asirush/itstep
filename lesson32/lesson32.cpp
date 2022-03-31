@@ -2,54 +2,58 @@
 #include <Windows.h>
 using namespace std;
 
+string username1, username2;
+int game_mode=0;
+char mass1[10][10], mass2[10][10], reserve1[10][10], reserve2[10][10];
+char* m1 = &mass1[0][0];
+char* m2 = &mass2[0][0];
+char* r1 = &reserve1[0][0];
+char* r2 = &reserve2[0][0];
 
-// Создадим двумерные массивы для карт игроков
-
-char pfield[10][10];
-
-char efield[10][10];
-
-char ecopyfield[10][10];
-
-char* pecopy = &ecopyfield[0][0];
-
-char* pf = &pfield[0][0];
-
-char* pe = &efield[0][0];
-
-int fourlive[4] = { 1, 1, 1, 1 };
-int fourcoor[4];
-
-// Указатель на массив, который хранит координаты "x" 4-ного корабля
-
-int* pfourcoor = fourcoor;
-
-// Функция для заполнения массивов пробелами
-void fillin(char* a) {
-	for (int i = 0; i < 100; i++) {
-		a[i] = '.';
-	}
+string username_func(){
+	string username;
+	cout << "Enter username: "; cin >> username;
+	return username;
 }
-void show(char* a) {
-	// Отображаем разметку столбиков буквами
-	cout << "  ";
-	// Вывод индексов столбиков от 0 до 9
-	for (int i = 0; i < 10; i++) {
-		cout << i << ' ';
-	}
-	cout << endl;
 
+int select_game_mode() {
+	cout << "Select gamemode: " << endl;
+	cout << "1. single player" << endl << "2. both bots" << endl << "3. two players" << endl;
+	cin >> game_mode;
+	return game_mode;
+}
 
+//mass_link; enemy_mass_link; playername;
+void show_map_mode1(char* a, char* b, string map_name) {
+	cout << "player: " << map_name << endl;
+	cout << "  abcdefghij" << endl;
 	for (int i = 0; i < 10; i++) {
-		cout << i << ' ';
+		if (i+1 < 10) { cout << i + 1 << " "; }
+		else { cout << i + 1; }
 		for (int j = 0; j < 10; j++) {
-			cout << a[i * 10 + j] << ' ';
-
+			cout << a[i * 10 + j];
 		}
 		cout << endl;
 	}
-	cout << endl;
+	cout << endl<<"enemy map: "<<endl;
+	for (int i = 0; i < 10; i++) {
+		if (i+1 < 10) { cout << i + 1 << " "; }
+		else { cout << i + 1; }
+		for (int j = 0; j < 10; j++) {
+			cout << b[i * 10 + j];
+		}
+		cout << endl;
+	}
 }
+/*
+map parametrs:
+	# - water (char 35)
+	X - hit (char 88)
+	- - miss (char 45)
+	+ - ship (char 43)
+*/
+
+
 // 4-ной корабль
 void ship4(char* f) {
 	//Получаем случайную ориентацию 4-ного корабля
@@ -97,17 +101,17 @@ void ship4(char* f) {
 			// Проверка на свободу 18 клеток
 
 			for (int i = x - 11; i <= x - 6; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 4; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 14; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
@@ -115,48 +119,38 @@ void ship4(char* f) {
 
 
 		} while (fourfree == 0);
-
-
-		for (int i = x; i < x + 4; i++) {
-			f[i] = char(223);
-			// Если на вход подано поле врага
-			if (f == pe) {
-				pfourcoor[i - x] = i;
-
-			}
-		}
 	}
 	else if (hororien == false) {
 		do {
 			fourfree = 1;
 			x = rand() % 70;// Случайный адрес от 0 до 69
 			for (int i = x - 11; i <= x - 9; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 1; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 11; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 19; i <= x + 21; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 29; i <= x + 31; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 39; i <= x + 41; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					fourfree = 0;
 				}
 			}
@@ -166,7 +160,7 @@ void ship4(char* f) {
 
 
 		for (int i = x; i <= x + 30; i = i + 10) {
-			f[i] = char(223);
+			f[i] = char(43);
 		}
 	}
 }
@@ -208,17 +202,17 @@ void ship3(char* f) {
 			} while (xthreecorrect == 0);
 
 			for (int i = x - 11; i <= x - 7; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 3; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 13; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					threefree = 0;
 				}
 			}
@@ -227,7 +221,7 @@ void ship3(char* f) {
 
 		} while (threefree == 0);
 		for (int i = x; i < x + 3; i++) {
-			f[i] = char(223);
+			f[i] = char(43);
 		}
 	}
 	// Проверка 3-ного вертикального корабля
@@ -238,27 +232,27 @@ void ship3(char* f) {
 
 
 			for (int i = x - 11; i <= x - 9; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 1; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 11; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x + 19; i <= x + 21; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x + 29; i <= x + 31; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					threefree = 0;
 				}
 			}
@@ -266,11 +260,10 @@ void ship3(char* f) {
 
 		} while (threefree == 0);
 		for (int i = x; i <= x + 20; i = i + 10) {
-			f[i] = char(223);
+			f[i] = char(43);
 		}
 	}
 }
-
 // 2-ной корабль
 void ship2(char* f) {
 	//Получаем случайную ориентацию 2-ного корабля
@@ -303,17 +296,17 @@ void ship2(char* f) {
 			} while (xtwocorrect == 0);
 
 			for (int i = x - 11; i <= x - 8; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 2; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 12; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					twofree = 0;
 				}
 			}
@@ -322,7 +315,7 @@ void ship2(char* f) {
 
 		} while (twofree == 0);
 		for (int i = x; i < x + 2; i++) {
-			f[i] = char(223);
+			f[i] = char(43);
 		}
 	}
 	// Проверка 2-ного вертикального корабля
@@ -333,22 +326,22 @@ void ship2(char* f) {
 
 
 			for (int i = x - 11; i <= x - 9; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 1; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 11; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x + 19; i <= x + 21; i++) {
-				if (f[i] == char(223)) {
+				if (f[i] == char(43)) {
 					twofree = 0;
 				}
 			}
@@ -356,7 +349,7 @@ void ship2(char* f) {
 
 		} while (twofree == 0);
 		for (int i = x; i <= x + 10; i = i + 10) {
-			f[i] = char(223);
+			f[i] = char(43);
 		}
 	}
 }
@@ -374,143 +367,72 @@ void ship1(char* f) {
 		onefree = 1;
 		x = rand() % 100;// Координата для 1-ного корабля от 0 до 99
 		for (int i = x - 11; i <= x - 9; i++) {
-			if (f[i] == char(223)) {
+			if (f[i] == char(43)) {
 				onefree = 0;
 			}
 		}
 		for (int i = x - 1; i <= x + 1; i++) {
-			if (f[i] == char(223)) {
+			if (f[i] == char(43)) {
 				onefree = 0;
 			}
 		}
 		for (int i = x + 9; i <= x + 11; i++) {
-			if (f[i] == char(223)) {
+			if (f[i] == char(43)) {
 				onefree = 0;
 			}
 		}
-
-
-
 	} while (onefree == 0);
 	// Ставим одиночный кораблик
-	f[x] = char(223);
-
-
-
+	f[x] = char(43);
 }
-//Функция для ручного заполнения тройных корабликов
 
-int main()
-{
-	srand(time(0));
-	// Создадим переменные для счета игроков
-	int scoreme = 0;
-	int scoreenemy = 0;
+void rand_map_gen(char* a){
+	for (int i = 0; i < 100; i++) { a[i] = char(35); }
+	ship4(a);
+	ship3(a); ship3(a);
+	ship2(a); ship2(a); ship2(a);
+	ship1(a); ship1(a); ship1(a); ship1(a);
+}
 
-
-
-	fillin(pf); //Заполняем массив карты игрока точками
-	fillin(pe);//Заполняем массив карты компьютера точками
-	fillin(pecopy); //Заполняем пробное поле точками
-
-	// Рисуем кораблики для полей обоих игроков
-	ship4(pf);
-	ship3(pf);
-	ship3(pf);
-	ship4(pe);
-	ship3(pe);
-	ship3(pe);
-	for (int i = 0; i < 3; i++) {
-		ship2(pf);
-		ship2(pe);
+//              username     enemy_map   enemys_map_monitor
+bool player_hit(string name, char* a, char* b) {
+	char num1(97-106); int num2;
+	cout << "select locations: "; cin >> num1; cin >> num2;
+	if (a[char(num1) * 10 + num2] == char(43)) {
+		b[char(num1) * 10 + num2] = char(88);
+		return true;
 	}
-	for (int i = 0; i < 4; i++) {
-		ship1(pf);
-		ship1(pe);
+	else {
+		a[char(num1) * 10 + num2] = char(45);
+		return false;
 	}
-	// Две переменные для хода игрока (выбранная строка и выбранный столбик)
-	int str, stlb;
+}
 
+void game_mode_1() {
+	username1 = username_func();
+	username2 = "bot";
+	rand_map_gen(m1);
+	rand_map_gen(m2);
 
-	// Выбираем кто будет ходить
-	int randomturn = rand() % 2;
-
-	// Основной игровой цикл
-
+	//game
 	while (true) {
-		show(pf);
-		show(pecopy);
-		// Если выпало 0, мы ходим первые
-		// Пока randomturn равен 0, ходит первый игрок
-		while (randomturn == 0) {
-
-			// Программа просит походить заново, если мы уже ходили на эту клетку
-			do {
-				cout << "Hod igroka #1" << endl;
-				do {
-					cout << "Vyberite stroku" << endl;
-					cin >> str;
-				} while (str < 0 || str > 9);
-				do {
-					cout << "Vyberite stolbik" << endl;
-					cin >> stlb;
-				} while (stlb < 0 || stlb > 9);
-			} while (pecopy[str * 10 + stlb] == 'X' || pecopy[str * 10 + stlb] == 'o');
-
-
-
-			// Проверяем что на этой клетке стоит: кораблик или там пусто
-			if (pe[str * 10 + stlb] == char(223)) {
-				cout << "Popali" << endl;
-				pecopy[str * 10 + stlb] = 'X';
-				scoreme += 1;
-			}
-			else {
-				cout << "Mimo" << endl;
-				pecopy[str * 10 + stlb] = 'o';
-				// Если мы промахнулись, то ход передается игроку #2
-				randomturn = 1;
-			}
-			Sleep(3000);
-			system("cls");
-			show(pf);
-			show(pecopy);
-		}
-		// Пока randomturn равен 1, ходит компьютер
-		while (randomturn == 1) {
-
-			do {
-				str = rand() % 10;
-				stlb = rand() % 10;
-			} while (pf[str * 10 + stlb] == 'X' || pf[str * 10 + stlb] == 'o');
-
-
-
-			if (pf[str * 10 + stlb] == char(223)) {
-				cout << "Vrag popal po coordinatam: " << str << ' ' << stlb << endl;
-				pf[str * 10 + stlb] = 'X';
-				scoreenemy += 1;
-				Sleep(5000);
-				break;
-			}
-			else {
-				cout << "Vrag promahnulsya po coordinatam: " << str << ' ' << stlb << endl;
-				pf[str * 10 + stlb] = 'o';
-				randomturn = 0;
-				Sleep(5000);
-				break;
-			}
-
-			system("cls");
-			show(pf);
-			show(pecopy);
-		}
-
-		system("cls");
-
+		show_map_mode1(m1, r2, username1);
+		while (player_hit(username1, m2, r2) == true) player_hit(username1, m2, r2);
+		while (player_hit(username2, m1, m1) == true) player_hit(username2, m1, m1);
 	}
+}
+void game_mode_2() {};
+void game_mode_3() {};
 
-	// Задача: у каждого корабля противника должен быть статус жизни (у 4-ного корабля 4 жизни, у 3-ного 3 жизни...)
-	// Если мы ранили корабль, сообщение "Бито"
-	// Если корабль потоплен, сообщение "Убит"
+int main() {
+	if (select_game_mode() == 1) {
+		game_mode_1();
+	}
+	else if (select_game_mode() == 2) {
+		game_mode_2();
+	}
+	else if (select_game_mode() == 3) {
+		game_mode_3();
+	}
+	return 0;
 }
