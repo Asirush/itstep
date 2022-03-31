@@ -1,5 +1,8 @@
 ﻿#include <iostream>
 #include <Windows.h>
+#include <cmath>
+#include <windows.h>
+#include <string.h>
 using namespace std;
 
 string username1, username2;
@@ -53,8 +56,6 @@ map parametrs:
 	+ - ship (char 43)
 */
 
-
-// 4-ной корабль
 void ship4(char* f) {
 	//Получаем случайную ориентацию 4-ного корабля
 	bool hororien = rand() % 2;
@@ -63,7 +64,6 @@ void ship4(char* f) {
 	// Переменная-флаг которая даст сигнал о том, что все 18 клеток успешно прошли проверку
 	int fourfree = 1;
 	int xfourcorrect = 1;
-	// Если 4-ной корабль горизонтальный 
 	if (hororien == true) {
 		// Проверяем 18 свободных клеток для 4-ного горизонтального корабля
 		do {
@@ -74,7 +74,7 @@ void ship4(char* f) {
 			do {
 				//Переменная для статуса корректного x
 				xfourcorrect = 1;
-				x = rand() % 100;// Случайный адрес от 0 до 99   87
+				x = rand() % 100;// Случайный адрес от 0 до 99
 				//Проверяем не выпали ли числа 7, 17, 27 ... 97
 				for (int i = 7; i <= 97; i = i + 10) {
 					if (x == i) {
@@ -98,20 +98,20 @@ void ship4(char* f) {
 				}
 			} while (xfourcorrect == 0);
 
-			// Проверка на свободу 18 клеток
+
 
 			for (int i = x - 11; i <= x - 6; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 4; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 14; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
@@ -119,52 +119,51 @@ void ship4(char* f) {
 
 
 		} while (fourfree == 0);
+		for (int i = x; i < x + 4; i++) {
+			f[i] = char(223);
+		}
 	}
 	else if (hororien == false) {
 		do {
 			fourfree = 1;
 			x = rand() % 70;// Случайный адрес от 0 до 69
 			for (int i = x - 11; i <= x - 9; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 1; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 11; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 19; i <= x + 21; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 29; i <= x + 31; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
 			for (int i = x + 39; i <= x + 41; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					fourfree = 0;
 				}
 			}
 
 		} while (fourfree == 0);
-
-
-
 		for (int i = x; i <= x + 30; i = i + 10) {
-			f[i] = char(43);
+			f[i] = char(223);
 		}
 	}
 }
-// 3-ной корабль
 void ship3(char* f) {
 	//Получаем случайную ориентацию 3-ного корабля
 	bool hororien = rand() % 2;
@@ -202,17 +201,17 @@ void ship3(char* f) {
 			} while (xthreecorrect == 0);
 
 			for (int i = x - 11; i <= x - 7; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 3; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 13; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					threefree = 0;
 				}
 			}
@@ -221,7 +220,7 @@ void ship3(char* f) {
 
 		} while (threefree == 0);
 		for (int i = x; i < x + 3; i++) {
-			f[i] = char(43);
+			f[i] = char(223);
 		}
 	}
 	// Проверка 3-ного вертикального корабля
@@ -232,27 +231,27 @@ void ship3(char* f) {
 
 
 			for (int i = x - 11; i <= x - 9; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 1; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 11; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x + 19; i <= x + 21; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					threefree = 0;
 				}
 			}
 			for (int i = x + 29; i <= x + 31; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					threefree = 0;
 				}
 			}
@@ -260,11 +259,10 @@ void ship3(char* f) {
 
 		} while (threefree == 0);
 		for (int i = x; i <= x + 20; i = i + 10) {
-			f[i] = char(43);
+			f[i] = char(223);
 		}
 	}
 }
-// 2-ной корабль
 void ship2(char* f) {
 	//Получаем случайную ориентацию 2-ного корабля
 	bool hororien = rand() % 2;
@@ -296,17 +294,17 @@ void ship2(char* f) {
 			} while (xtwocorrect == 0);
 
 			for (int i = x - 11; i <= x - 8; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 2; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 12; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					twofree = 0;
 				}
 			}
@@ -315,7 +313,7 @@ void ship2(char* f) {
 
 		} while (twofree == 0);
 		for (int i = x; i < x + 2; i++) {
-			f[i] = char(43);
+			f[i] = char(223);
 		}
 	}
 	// Проверка 2-ного вертикального корабля
@@ -326,22 +324,22 @@ void ship2(char* f) {
 
 
 			for (int i = x - 11; i <= x - 9; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x - 1; i <= x + 1; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x + 9; i <= x + 11; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					twofree = 0;
 				}
 			}
 			for (int i = x + 19; i <= x + 21; i++) {
-				if (f[i] == char(43)) {
+				if (f[i] == char(223)) {
 					twofree = 0;
 				}
 			}
@@ -349,11 +347,10 @@ void ship2(char* f) {
 
 		} while (twofree == 0);
 		for (int i = x; i <= x + 10; i = i + 10) {
-			f[i] = char(43);
+			f[i] = char(223);
 		}
 	}
 }
-// 1-ный корабль
 void ship1(char* f) {
 
 	//Получаем случайную координату х для 1-ного корабля
@@ -367,23 +364,26 @@ void ship1(char* f) {
 		onefree = 1;
 		x = rand() % 100;// Координата для 1-ного корабля от 0 до 99
 		for (int i = x - 11; i <= x - 9; i++) {
-			if (f[i] == char(43)) {
+			if (f[i] == char(223)) {
 				onefree = 0;
 			}
 		}
 		for (int i = x - 1; i <= x + 1; i++) {
-			if (f[i] == char(43)) {
+			if (f[i] == char(223)) {
 				onefree = 0;
 			}
 		}
 		for (int i = x + 9; i <= x + 11; i++) {
-			if (f[i] == char(43)) {
+			if (f[i] == char(223)) {
 				onefree = 0;
 			}
 		}
+
+
+
 	} while (onefree == 0);
 	// Ставим одиночный кораблик
-	f[x] = char(43);
+	f[x] = char(223);
 }
 
 void rand_map_gen(char* a){
@@ -398,7 +398,7 @@ void rand_map_gen(char* a){
 bool player_hit(string name, char* a, char* b) {
 	char num1(97-106); int num2;
 	cout << "select locations: "; cin >> num1; cin >> num2;
-	if (a[char(num1) * 10 + num2] == char(43)) {
+	if (a[char(num1) * 10 + num2] == char(223)) {
 		b[char(num1) * 10 + num2] = char(88);
 		return true;
 	}
@@ -417,13 +417,12 @@ void game_mode_1() {
 	//game
 	while (true && player1_points<21 || player2_points<21) {
 		show_map_mode1(m1, r2, username1);
-		while (player_hit(username1, m2, r2) == true && player1_points < 20 || player2_points < 20) player_hit(username1, m2, r2); player1_points++;
-		while (player_hit(username2, m1, m1) == true && player1_points < 20 || player2_points < 20) player_hit(username2, m1, m1); player2_points++;
+		while (player_hit(username1, m2, r2) == true && player1_points < 20 || player2_points < 20)  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username1, m2, r2); player1_points++;
+		while (player_hit(username2, m1, m1) == true && player1_points < 20 || player2_points < 20)  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username2, m1, m1); player2_points++;
 	}
 	if (player1_points == 20) { system("cls"); cout << username1 << " is a winner!"; }
 	else if (player2_points == 20) { system("cls"); cout << username2 << " is a winner!"; }
 }
-
 void game_mode_2() {};
 void game_mode_3() {};
 
