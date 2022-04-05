@@ -82,7 +82,7 @@ void selection() {
 	cout << "What do you search?" << endl;
 	cout << "1. name" << endl << "2. date (closest)" << endl << "3. priority" <<endl<< "4. description key-values" << endl;
 	cin >> a;
-	while (b = 0) {
+	while (b == 0) {
 		switch (a) {
 		case 1:
 			//search by name
