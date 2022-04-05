@@ -1,20 +1,173 @@
-// task_list.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <Windows.h>
+#include <cmath>
+#include <windows.h>
+#include <string.h>
+#include <fstream>
+using namespace std;
+
+int task_count = 0;
+int* tc = &task_count;
+ofstream myfile;
+
+struct date {
+	int day;
+	int month;
+	int year;
+	int hour;
+	int minutes;
+};
+
+struct task{
+	string name;
+	int priority;
+	string description;
+	date time;
+};
+
+//create array
+task tasks[999];
+date dates_select[999];
+
+int welcommen() {
+	system("cls");
+	cout << "Please select what to do:" << endl << "1. Show my task list" << endl;
+	cout << "2. Add new task" << endl << "3. Edit task" << endl << "4. Search task" << endl;
+	int a; cin >> a;
+	return a;
+}
+
+void show_todolist() {
+	system("cls");
+	cout << "To do list" <<  endl;
+	cout << "num|  task name |      time       |  priority  |  task description" << endl;
+	for (int i = 0; i < 25; i++) {
+		if (i < 9) { cout << " "; cout << i + 1 << ".|   " << tasks[i].name << "    " << tasks[i].time.day << "/" << tasks[i].time.month << "/" << tasks[i].time.year << " " << tasks[i].time.hour << ":" << tasks[i].time.minutes << "          " << tasks[i].priority << "           " << tasks[i].description << endl;
+		}
+		else{ cout << i + 1 << ".|   " << tasks[i].name << "    " << tasks[i].time.day << "/" << tasks[i].time.month << "/" << tasks[i].time.year << " " << tasks[i].time.hour << ":" << tasks[i].time.minutes << "      " << tasks[i].priority << "      " << tasks[i].description << endl; }
+	}
+	Sleep(5000);
+}
+
+void add_new_task() {
+	system("cls");
+	cout << "Task name: "; cin >> tasks[*tc].name; cout << endl; system("cls");
+	cout << "Enter deadline(DD/MM/YY HH:MM): "; cin >> tasks[*tc].time.day; cout << "/"; cin >> tasks[*tc].time.month; cout << "/"; cin >> tasks[*tc].time.year; cout << " "; cin >> tasks[*tc].time.hour; cout << ":"; cin >> tasks[*tc].time.minutes; cout << endl; system("cls");
+	cout << "Priritize your task(1-10): "; cin >> tasks[*tc].priority; cout << endl; system("cls");
+	cout << "Add your task description: "; cin >> tasks[*tc].description; cout << endl; system("cls");
+	task_count++;
+}
+
+void edit_task() {
+	system("cls");
+	int n;
+	cout << "Select what task to edit: "; cin >> n;
+	cout << "num|  task name |      time       |  priority  |  task description" << endl;
+		if (n < 9) {
+			cout << " "; cout << n << ".|   " << tasks[n-1].name << "    " << tasks[n-1].time.day << "/" << tasks[n-1].time.month << "/" << tasks[n-1].time.year << " " << tasks[n-1].time.hour << ":" << tasks[n-1].time.minutes << "      " << tasks[n-1].priority << "      " << tasks[n-1].description << endl;
+		}
+		else { cout << n << ".|   " << tasks[n-1].name << "    " << tasks[n-1].time.day << "/" << tasks[n-1].time.month << "/" << tasks[n-1].time.year << " " << tasks[n-1].time.hour << ":" << tasks[n-1].time.minutes << "      " << tasks[n-1].priority << "      " << tasks[n-1].description << endl; }
+	Sleep(5000);
+	system("cls");
+	cout << "Task name: "; cin >> tasks[n - 1].name; cout << endl; system("cls");
+	cout << "Enter deadline(DD/MM/YY HH:MM): "; cin >> tasks[n - 1].time.day; cout << "/"; cin >> tasks[n - 1].time.month; cout << "/"; cin >> tasks[n - 1].time.year; cout << " "; cin >> tasks[n - 1].time.hour; cout << ":"; cin >> tasks[n - 1].time.minutes; cout << endl; system("cls");
+	cout << "Priritize your task(1-10): "; cin >> tasks[n - 1].priority; cout << endl; system("cls");
+	cout << "Add your task description: "; cin >> tasks[n - 1].description; cout << endl; system("cls");
+}
+
+void selection() {
+	int a, b = 0, j=0, show_list[100], number = 0;
+	string name; int counter = 0;
+
+	cout << "What do you search?" << endl;
+	cout << "1. name" << endl << "2. date (closest)" << endl << "3. priority" <<endl<< "4. description key-values" << endl;
+	cin >> a;
+	while (b = 0) {
+		switch (a) {
+		case 1:
+			//search by name
+			system("cls");
+			cout << "Select what priority are you intrested in: "; cin >> name;
+			for (int i = 0; i < 999; i++) {
+				if (tasks[i].name == name) {
+					show_list[number] = i;
+					number++;
+				}
+			}
+			system("cls");
+			cout << "To do list" << endl;
+			cout << "num|  task name |      time       |  priority  |  task description" << endl;
+			for (int i = 0; i < 25; i++) {
+				j = show_list[i];
+				if (i < 9) {
+					cout << " "; cout << j + 1 << ".|   " << tasks[j].name << "    " << tasks[j].time.day << "/" << tasks[j].time.month << "/" << tasks[j].time.year << " " << tasks[j].time.hour << ":" << tasks[j].time.minutes << "          " << tasks[j].priority << "           " << tasks[j].description << endl;
+				}
+				else { cout << j + 1 << ".|   " << tasks[j].name << "    " << tasks[j].time.day << "/" << tasks[j].time.month << "/" << tasks[j].time.year << " " << tasks[j].time.hour << ":" << tasks[j].time.minutes << "      " << tasks[j].priority << "      " << tasks[j].description << endl; }
+			}
+			break;
+		case 2:
+			//search by closest execution date
+			system("cls");
+			cout << "Enter deadline(DD/MM/YY HH:MM): "; cin >> dates_select[counter].day; cout << "/"; cin >> dates_select[counter].month; cout << "/"; cin >> dates_select[counter].year; cout << " "; cin >> dates_select[counter].hour; cout << ":"; cin >> dates_select[counter].minutes; cout << endl; system("cls");
+			system("cls");
+			cout << "To do list" << endl;
+			cout << "num|  task name |      time       |  priority  |  task description" << endl;
+			for (int j = 0; j < 1000; j++) {
+				if (dates_select[counter].day == tasks[j].time.day && dates_select[counter].month == tasks[j].time.month && dates_select[counter].year == tasks[j].time.year && dates_select[counter].hour == tasks[j].time.hour && dates_select[counter].minutes == tasks[j].time.minutes) {
+					if (j < 9) {
+						cout << " "; cout << j + 1 << ".|   " << tasks[j].name << "    " << tasks[j].time.day << "/" << tasks[j].time.month << "/" << tasks[j].time.year << " " << tasks[j].time.hour << ":" << tasks[j].time.minutes << "          " << tasks[j].priority << "           " << tasks[j].description << endl;
+					}
+					else { cout << j + 1 << ".|   " << tasks[j].name << "    " << tasks[j].time.day << "/" << tasks[j].time.month << "/" << tasks[j].time.year << " " << tasks[j].time.hour << ":" << tasks[j].time.minutes << "      " << tasks[j].priority << "      " << tasks[j].description << endl; }
+				}
+			}
+			break;
+		case 3:
+			//search by priority
+			system("cls"); int c;
+			cout << "Select what priority are you intrested in: "; cin >> c;
+			for (int i = 0; i < 999; i++) {
+				if (tasks[i].priority == c) {
+					show_list[number] = i;
+					number++;
+				}
+			}
+			system("cls");
+			cout << "To do list" << endl;
+			cout << "num|  task name |      time       |  priority  |  task description" << endl;
+			for (int i = 0; i < 25; i++) {
+				j = show_list[i];
+				if (i < 9) {
+					cout << " "; cout << j + 1 << ".|   " << tasks[j].name << "    " << tasks[j].time.day << "/" << tasks[j].time.month << "/" << tasks[j].time.year << " " << tasks[j].time.hour << ":" << tasks[j].time.minutes << "          " << tasks[j].priority << "           " << tasks[j].description << endl;
+				}
+				else { cout << j + 1 << ".|   " << tasks[j].name << "    " << tasks[j].time.day << "/" << tasks[j].time.month << "/" << tasks[j].time.year << " " << tasks[j].time.hour << ":" << tasks[j].time.minutes << "      " << tasks[j].priority << "      " << tasks[j].description << endl; }
+			}
+			break;
+		case 4:
+			//exit
+			b++;
+			break;
+		}
+	}
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	while (true) {
+		switch (welcommen()) {
+		case 1:
+			show_todolist();
+			break;
+		case 2:
+			add_new_task();
+			break;
+		case 3:
+			edit_task();
+			break;
+		case 4:
+			selection();
+			break;
+		default:
+			show_todolist();
+		}
+	}
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
