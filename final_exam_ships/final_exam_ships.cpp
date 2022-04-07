@@ -8,10 +8,10 @@ using namespace std;
 string username1, username2;
 int game_mode=0, player1_points = 0, player2_points = 0;
 char mass1[10][10], mass2[10][10], reserve1[10][10], reserve2[10][10];
-char* m1 = &mass1[0][0];
-char* m2 = &mass2[0][0];
-char* r1 = &reserve1[0][0];
-char* r2 = &reserve2[0][0];
+char* m1 = &mass1[0][0];//player1 mass
+char* m2 = &mass2[0][0];//player2 mass
+char* r1 = &reserve1[0][0];//player1 showing table
+char* r2 = &reserve2[0][0];//player2 showing table
 
 string username_func(){
 	string username;
@@ -39,6 +39,7 @@ void show_map_mode1(char* a, char* b, string map_name) {
 		cout << endl;
 	}
 	cout << endl<<"enemy map: "<<endl;
+	cout << "  abcdefghij" << endl;
 	for (int i = 0; i < 10; i++) {
 		if (i+1 < 10) { cout << i + 1 << " "; }
 		else { cout << i + 1; }
@@ -396,32 +397,52 @@ void rand_map_gen(char* a){
 
 //              username     enemy_map   enemys_map_monitor
 bool player_hit(string name, char* a, char* b) {
-	char num1(97-106); int num2;
+	char num1/*(97-106)*/; int num2;
 	cout << "select locations: "; cin >> num1; cin >> num2;
-	if (a[char(num1) * 10 + num2] == char(223)) {
-		b[char(num1) * 10 + num2] = char(88);
+	if (a[(char(num1) - 97) + num2 * 10] == char(223)) {
+		b[(char(num1) - 97) + num2 * 10] = char(88);
 		return true;
 	}
 	else {
-		a[char(num1) * 10 + num2] = char(45);
+		a[(char(num1) - 97) + num2 * 10] = char(45);
 		return false;
 	}
 }
+/*
+map parametrs:
+	# - water (char 35)
+	X - hit (char 88)
+	- - miss (char 45)
+	+ - ship (char 43)
+*/
 
 void game_mode_1() {
 	username1 = username_func();
 	username2 = "bot";
 	rand_map_gen(m1);
 	rand_map_gen(m2);
+	int rand_go = rand() % 2;
 
 	//game
-	while (true && player1_points<21 || player2_points<21) {
-		show_map_mode1(m1, r2, username1);
-		while (player_hit(username1, m2, r2) == true && (player1_points < 20 || player2_points < 20))  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username1, m2, r2); player1_points++;
-		while (player_hit(username2, m1, m1) == true && (player1_points < 20 || player2_points < 20))  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username2, m1, m1); player2_points++;
+	if(rand_go == 1){
+		while (true && player1_points < 21 || player2_points < 21) {
+			show_map_mode1(m1, r2, username1);
+			while (player_hit(username1, m2, r2) == true && (player1_points < 21 || player2_points < 21))  system("cls"); cout << "hit, player points: " << player1_points << endl << "enemy points: " << player2_points << endl;; show_map_mode1(m1, r2, username1); player_hit(username1, m2, r2); player1_points++;
+			while (player_hit(username2, m1, m1) == true && (player1_points < 21 || player2_points < 21))  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username2, m1, m1); player2_points++;
+		}
+		if (player1_points == 20) { system("cls"); cout << username1 << " is a winner!"; }
+		else if (player2_points == 20) { system("cls"); cout << username2 << " is a winner!"; }
 	}
-	if (player1_points == 20) { system("cls"); cout << username1 << " is a winner!"; }
-	else if (player2_points == 20) { system("cls"); cout << username2 << " is a winner!"; }
+	else {
+		while (true && player1_points < 21 || player2_points < 21) {
+			show_map_mode1(m1, r2, username1);
+			while (player_hit(username2, m1, m1) == true && (player1_points < 21 || player2_points < 21))  system("cls"); show_map_mode1(m1, r2, username1); player_hit(username2, m1, m1); player2_points++;
+			while (player_hit(username1, m2, r2) == true && (player1_points < 21 || player2_points < 21))  system("cls"); cout << "hit" << endl; show_map_mode1(m1, r2, username1); player_hit(username1, m2, r2); player1_points++;
+		}
+		if (player1_points == 20) { system("cls"); cout << username1 << " is a winner!"; }
+		else if (player2_points == 20) { system("cls"); cout << username2 << " is a winner!"; }
+	}
+	
 }
 void game_mode_2() {};
 void game_mode_3() {};
