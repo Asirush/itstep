@@ -399,12 +399,12 @@ void rand_map_gen(char* a){
 bool player_hit(string name, char* a, char* b) {
 	char num1/*(97-106)*/; int num2;
 	cout << "select locations: "; cin >> num1; cin >> num2;
-	if (a[(char(num1) - 97) + num2 * 10] == char(223)) {
-		b[(char(num1) - 97) + num2 * 10] = char(88);
+	if (a[(char(num1) - 97) + num2 * 10-10] == char(223)) {
+		b[(char(num1) - 97) + num2 * 10-10] = char(88);
 		return true;
 	}
 	else {
-		a[(char(num1) - 97) + num2 * 10] = char(45);
+		b[(char(num1) - 97) + num2 * 10-10] = char(45);
 		return false;
 	}
 }
@@ -422,7 +422,7 @@ void game_mode_1() {
 	rand_map_gen(m1);
 	rand_map_gen(m2);
 	int rand_go = rand() % 2;
-
+	system("cls");
 	//game
 	if(rand_go == 1){
 		while (true && player1_points < 21 || player2_points < 21) {
@@ -448,6 +448,7 @@ void game_mode_2() {};
 void game_mode_3() {};
 
 int main() {
+	cout << char(97) << endl;
 	if (select_game_mode() == 1) {
 		game_mode_1();
 	}
