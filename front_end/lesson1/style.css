@@ -22,3 +22,9 @@ span{background-color: white; color: black; }/*height: 500px; width: 750px; - no
 мы можем добавить параметр !important после параметра и все правила будут игнорироваться
 
 */
+ul.loc{list-style-type: none;}
+ul {list-style-type: \2639;}/* псевдо классы*/
+
+ul.loc li:before{content: '\2639';}
+ul.loc li:hover{color: purple; font-weight: bold;}
+ul.loc li:hover:before{content:'\263A'; color: green; font-size: 40px;}
