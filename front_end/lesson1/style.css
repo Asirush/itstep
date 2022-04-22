@@ -1,0 +1,5 @@
+p {font-size: 52px; color: green;}
+h1{text-align: center; font-size: 72; color: blue; font-family: monospace;}
+body{background-color: black; color: white;}
+div{background-color: lightblue; color: black; font-size: 40px;  text-align: center;}/*height: 500px; width: 750px; - working, because block*/
+span{background-color: white; color: black; }/*height: 500px; width: 750px; - not working, because string*/
