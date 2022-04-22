@@ -13,6 +13,12 @@ span{background-color: white; color: black; }/*height: 500px; width: 750px; - no
     color: red;
     font-weight: bold;
 }
-.red{
+.red{ /*создание класса для тега*/
     color: red;
 }
+#book{color: red;}  /*создание идентификатора, он должен быть уникальным*/
+.first{color: green;} /* так же правило для идентификатора считается важнее чем класс*/
+/*
+мы можем добавить параметр !important после параметра и все правила будут игнорироваться
+
+*/
