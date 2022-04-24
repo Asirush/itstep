@@ -10,10 +10,6 @@ int main()
 {
     my_string str("test");
     my_string str2(str);
-
     my_string test = f(str);
-
-
     return 0;
 }
-
