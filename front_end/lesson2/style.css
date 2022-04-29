@@ -54,4 +54,10 @@ ul.loc li:hover:before{content:'\263A'; color: green; font-size: 40px;}
     width: 1200px;
     margin: 0px auto;
     background-color: #ebebeb;
+
+}
+
+.header img{
+    width: 350px;
+    background-color: black;
 }
