@@ -1,0 +1,57 @@
+p {font-size: 52px; color: green;}
+body{background-color: white; color: black}
+/*div{background-color: white; color:  black; justify-content: space-around; }/*height: 500px; width: 750px; - working, because block*/
+span{background-color: white; color: black; }/*height: 500px; width: 750px; - not working, because string*/
+.blue{
+    color: blue;
+}
+.blue_underline{
+    color: blue;
+    text-decoration: underline;
+}
+.red_fat{
+    color: red;
+    font-weight: bold;
+}
+.red{ /*создание класса для тега*/
+    color: red;
+}
+#book{color: red;}  /*создание идентификатора, он должен быть уникальным*/
+.first{color: green;} /* так же правило для идентификатора считается важнее чем класс*/
+/*
+мы можем добавить параметр !important после параметра и все правила будут игнорироваться
+
+*/
+ul.loc{list-style-type: none;}
+ul {list-style-type: \2639;}/* псевдо классы*/
+
+ul.loc li:before{content: '\2639';}
+ul.loc li:hover{color: purple; font-weight: bold;}
+ul.loc li:hover:before{content:'\263A'; color: green; font-size: 40px;}
+
+/*lesson 2*/
+.box{
+    background-color: gray;
+    color: white;
+
+    /*отступ вне блока
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    margin: top, right, bottom, left*/
+
+    padding: auto; /*отсутпает автоматически внутри блока*/
+}
+
+.buton{
+    margin: 0px auto;
+    background-color: aquamarine;
+    text-align: center;
+}
+
+.content{
+    width: 1200px;
+    margin: 0px auto;
+    background-color: #ebebeb;
+}
