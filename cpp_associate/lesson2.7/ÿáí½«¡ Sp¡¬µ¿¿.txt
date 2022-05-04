@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace std;
+
+http://www.cplusplus.com/reference/string/string/
+https://msdn.microsoft.com/ru-ru/library/system.string(v=vs.110).aspx?cs-save-lang=1&cs-lang=cpp#code-snippet-1
+Тема: Шаблоны функций Задание. Реализуйте шаблонные функции для поиска максимума,
+минимума, сортировки массива (любым алгоритмом сортировки), двоичного поиска в
+массиве, замены элемента массива на переданное значение. 
+
+
+// шаблон функции printArray
+template <typename MyType>
+void printArray(const MyType * array, int count)
+{
+	for (int ix = 0; ix < count; ix++)
+		cout << array[ix] << "   ";
+	cout << endl;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "RUSSIAN");
+
+	// размеры массивов
+	const int iSize = 10,
+		dSize = 7,
+		fSize = 10,
+		cSize = 5;
+
+	// массивы разных типов данных
+	int    iArray[iSize] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	double dArray[dSize] = { 1.2345, 2.234, 3.57, 4.67876, 5.346, 6.1545, 7.7682 };
+	float  fArray[fSize] = { 1.34, 2.37, 3.23, 4.8, 5.879, 6.345, 73.434, 8.82, 9.33, 10.4 };
+	char   cArray[cSize] = { "MARS" };
+
+	cout << "\t\tPattern of function of an output of an array on the screen\n\n";
+
+	// вызов локальной версии функции printArray для типа int через шаблон
+	cout << "\n Array type int:\n"; printArray(iArray, iSize);
+
+	// вызов локальной версии функции printArray для типа double через шаблон
+	cout << "\n Array type double:\n"; printArray(dArray, dSize);
+
+	// вызов локальной версии функции printArray для типа float через шаблон
+	cout << "\n Array type float:\n"; printArray(fArray, fSize);
+
+	// вызов локальной версии функции printArray для типа char через шаблон
+	cout << "\n Array type char:\n"; printArray(cArray, cSize);
+
+	return 0;
+}
