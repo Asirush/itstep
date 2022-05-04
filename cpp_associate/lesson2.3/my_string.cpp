@@ -51,7 +51,8 @@ const char my_string::at(size_t pos) const
 
 void my_string::push_back(char ch)
 {
-
+	int lin = this->length();
+	str(lin) = ch;
 }
 
 size_t my_string::find(const char* str, size_t pos) const
@@ -96,7 +97,9 @@ void my_string::replace(size_t pos, size_t len, const my_string& obj)
 
 void my_string::swap(my_string&& obj)
 {
-	
+	char* a = this->str;
+	this->str = obj.str;
+	obj.str = a;
 }
 
 void my_string::pop_back()
@@ -109,6 +112,29 @@ void my_string::append(const char* str)
 {
 	const size_t size = strlen(str);
 
+}
+
+void my_string::append(const my_string& obj)
+{
+	my_string a(this->str + obj.str);
+
+}
+
+void my_string::insert(size_t pos, const char* str)
+{
+	my_string a;
+	int len = strlen(this->str) + strlen(str);
+	for (auto i = 0; i < len; i++) {
+		if (i < pos) {
+			a.str[i] = this->str[i];
+		}
+		else if (i >= pos && i <= strlen(str)) {
+			a.str[i] = str[i - pos];
+		}
+		else {
+			a.str[i] = this->str[i - pos];
+		}
+	}
 }
 
 
