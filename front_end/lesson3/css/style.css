@@ -1,0 +1,51 @@
+.cont {
+    width: 1170px;
+    margin: auto;
+    border: 2px solid #ebebeb;
+    padding: auto;
+}
+
+.sign {
+    font-size: 14px;
+    color: #0099ae;
+    border: 1px solid #0099ae;
+    padding: 10px 25px;
+    width: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sign:hover {
+    outline: none;
+    background: 0 0;
+    box-shadow: none;
+    color: #01707f;
+    border-color: #01707f;
+}
+
+.text-l {
+    float: left;
+    width: 41%;
+    padding: 82px 0px;
+}
+
+.parametrs {
+    align-items: center;
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+.parametrs img {
+    height: 79px;
+}
+
+.parametrs-menu {
+    float: left;
+}
+
+.slider {
+    background-image: url(../img/slider-bg.png);
+    background-repeat: repeat-x;
+    background-position: center bottom;
+}
