@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 
-
 //mytype sum(mytype a, mytype b) { return a + b; }
 
 //int sum(int first, int second) { return first + second; }

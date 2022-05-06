@@ -44,15 +44,12 @@ inline size_t my_string::length() const
 
 const char my_string::at(size_t pos) const
 {
-	const char* ptr = this->str;
-	size_t size = strlen(this->str);
-	return size + pos;
+	return this->str[pos];
 }
 
 void my_string::push_back(char ch)
 {
-	int lin = this->length();
-	str(lin) = ch;
+	this->str[strlen(str) + 1] = ch;
 }
 
 size_t my_string::find(const char* str, size_t pos) const
@@ -64,6 +61,37 @@ size_t my_string::find(const char* str, size_t pos) const
 		}
 	}
 	return npos;
+}
+
+size_t my_string::find(const my_string& obj, size_t pos) const
+{
+	if (this->str) {
+		const char* ptr = strstr(this->str + pos, obj.str);
+		if (ptr) {
+			return ptr - obj.str;
+		}
+	}
+	return npos;
+}
+
+int my_string::compare(const char* str) const
+{
+	int counter = 0;
+	size_t size = strlen(this->str);
+	for (int i = 0; i < size; i++) {
+		if (this->str[i] == str[i]) counter++;
+	}
+	return counter;
+}
+
+int my_string::compare(const my_string& obj) const
+{
+	int counter = 0;
+	size_t size = strlen(this->str);
+	for (int i = 0; i < size; i++) {
+		if (this->str[i] == obj.str[i]) counter++;
+	}
+	return counter;
 }
 
 void my_string::clear()
@@ -102,6 +130,24 @@ void my_string::swap(my_string&& obj)
 	obj.str = a;
 }
 
+void my_string::copy(const char* str)
+{
+	size_t size = strlen(str);
+	delete[]this->str;
+	for (size_t i = 0; i < size; i++){
+		this->str[i] = str[i];
+	}
+}
+
+void my_string::copy(const my_string& obj)
+{
+	size_t size = strlen(obj.str);
+	delete[]this->str;
+	for (size_t i = 0; i < size; i++) {
+		this->str[i] = obj.str[i];
+	}
+}
+
 void my_string::pop_back()
 {
 	size_t size = strlen(this->str);
@@ -110,14 +156,22 @@ void my_string::pop_back()
 
 void my_string::append(const char* str)
 {
-	const size_t size = strlen(str);
-
+	const size_t size1 = strlen(this->str); size_t size2 = strlen(str);
+	for (size_t i = 0; i < size1 + size2; i++) {
+		while (i > size1) {
+			this->str[i] = str[i-size1];
+		}
+	}
 }
 
 void my_string::append(const my_string& obj)
 {
-	my_string a(this->str + obj.str);
-
+	const size_t size1 = strlen(this->str); size_t size2 = strlen(obj.str);
+	for (size_t i = 0; i < size1 + size2; i++) {
+		while (i > size1) {
+			this->str[i] = obj.str[i-size1];
+		}
+	}
 }
 
 void my_string::insert(size_t pos, const char* str)
@@ -135,6 +189,29 @@ void my_string::insert(size_t pos, const char* str)
 			a.str[i] = this->str[i - pos];
 		}
 	}
+}
+
+void my_string::insert(size_t pos, const my_string& obj)
+{
+	size_t size1 = strlen(this->str);
+	size_t size2 = strlen(obj.str);
+	my_string a;
+	for (int i = 0; i < size2; i++) {
+		a.str[i] = this->str[pos + i];
+	}
+	for (size_t i = 0; i < size1 + size2; i++) {
+		if (i >= pos && (i - pos) < size2) {
+			this->str[i] = obj.str[i];
+		}
+		else if (i > pos) {
+			this->str[i] = a.str[i - size2];
+		}
+	}
+}
+
+void my_string::erase()
+{
+	str = nullptr;
 }
 
 
