@@ -1,0 +1,14 @@
+p.red{
+    color: red;
+}
+
+.center {
+    text-align: center;
+}
+
+.page{
+    width: 1170px;
+    margin: auto;
+    border: 2px solid #ebebeb;
+    padding: auto;
+}
