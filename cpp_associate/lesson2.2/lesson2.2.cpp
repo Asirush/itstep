@@ -51,30 +51,29 @@ int main()
 
 	book test("������ ��������", "Grokking Algorithms: An illustrated guide for programmers and other curious people", "�����", 2017, 370);
 
-	book test2 = test; 
+	
 	/*also possible:
 	book test2(test)*/
 
-	/*const int size = 3;
-	book mas[size];*/
-	//mas[0].init("������ ��������", "Grokking Algorithms: An illustrated guide for programmers and other curious people", "�����", 2017, 370);
-	//mas[1].init("����� ������", "����������� �����������: ���������� �� ������ ���", "�����", 2015, 272);
-	//mas[2].init("��� �������", "21st Century C", "��� �����", 2015, 376);
+	const int size = 3;
+	book mas[size];
+	mas[0].init("������ ��������", "Grokking Algorithms: An illustrated guide for programmers and other curious people", "�����", 2017, 370);
+	mas[1].init("����� ������", "����������� �����������: ���������� �� ������ ���", "�����", 2015, 272);
+	mas[2].init("��� �������", "21st Century C", "��� �����", 2015, 376);
+	std::cout << "������ ���� ���'a:\n";
+	for (int i = 0; i < size; i++) {
+		mas[i].show_by_author("���");
+	}
 
-	//std::cout << "������ ���� ���'a:\n";
-	//for (int i = 0; i < size; i++) {
-	//	mas[i].show_by_author("���");
-	//}
+	std::cout << "������ ���� ������������ �����:\n";
+	for (int i = 0; i < size; i++) {
+		mas[i].show_by_publishing_house("�����");
+	}
 
-	//std::cout << "������ ���� ������������ �����:\n";
-	//for (int i = 0; i < size; i++) {
-	//	mas[i].show_by_publishing_house("�����");
-	//}
-
-	//std::cout << "������ ���� ����� 2000:\n";
-	//for (int i = 0; i < size; i++) {
-	//	mas[i].show_by_year(2000);
-	//}
+	std::cout << "������ ���� ����� 2000:\n";
+	for (int i = 0; i < size; i++) {
+		mas[i].show_by_year(2000);
+	}
 
 	return 0;
 }
