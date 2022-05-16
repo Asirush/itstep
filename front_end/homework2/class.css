@@ -1,14 +1,98 @@
-p.red{
+.a {
+    text-align: center;
+    font-weight: bold;
+}
+.s {
+    color: red;
+    font-size: 20px;
+}
+.d {
+    font-size: 20px;
+    font-weight: bold;
+}
+.f {
+    font-weight: bold;
+    text-align: center;
+}
+.g {
+    text-align: left;
+}
+
+ul.loc{list-style-type: none;}
+ul.loc li:before{content:'\272A'}
+ul.loc li:hover::before{
+    font-size: 20px;
+    color:red;
+    content :'\2776'}
+    ul.loc li:hover{
+        color:blueviolet;
+        font-weight: bold;
+    }
+
+.h {
+    text-align: center;
+    font-weight: bold; 
+    font-size: 25px;
+}
+
+ul.j {list-style-type: none;}
+ul.j li.before {content: '\2714';}
+ul.j li:hover::before{
+    font-size: 20px;
+    color:red;
+    content :'\2714'}
+    ul.j li:hover{
+        color:blueviolet;
+        font-weight: bold;
+    }
+
+
+.k {
+    text-align: center;
+    font-weight: bold; 
+    font-size: 25px;
+}
+
+
+ul.l {list-style-type: none;}
+ul.l li.before {content: '\27A5';}
+ul.l li:hover::before{
+    font-size: 20px;
+    color:red;
+    content :'\27A5'}
+    ul.l li:hover{
+        color:blueviolet;
+        font-weight: bold;
+    }
+
+
+h3 {
+    text-align: center;
+    font-weight: bold; 
+    font-size: 25px;
+}
+
+.z {
+    color: yellow;
+}
+.x {
     color: red;
 }
 
-.center {
-    text-align: center;
-}
+ul.c {list-style-type: none;}
+ul.c li.before {content: '\2716';}
+ul.c li:hover::before{
+    font-size: 20px;
+    color:red;
+    content :'\2716'}
+    ul.c li:hover{
+        color:blueviolet;
+        font-weight: bold;
+    }
 
-.page{
-    width: 1170px;
-    margin: auto;
-    border: 2px solid #ebebeb;
-    padding: auto;
+
+.v {
+    text-align: center;
+    font-weight: bold; 
+    font-size: 25px;
 }
