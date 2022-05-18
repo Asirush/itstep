@@ -1,20 +1,85 @@
-// lesson2.10.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <ctime>
+
+#include "s_list.h"
+using namespace std;
+
+/*
+    vector - better for searching systems
+    list - better for operations systems
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    vector<array<int, 0xFFFFFFF>> vs; // list is better then vector because of no operations, just changing links
 }
+*/
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+int main() {
+	srand(time(0));
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+	s_list<int> first;
+	int size = rand() % 20;
+	for (int i = 0; i < size; i++)
+		first.add_to_head(rand() % 100);
+	first.show();
+
+	//first.delete_from_head();
+	//first.delete_from_tail();
+	//first.show();
+
+	//s_list<int> second;
+	//size = rand() % 20;
+	//for (int i = 0; i < size; i++)
+	//	second.add_to_head(rand() % 10);
+	//second.show();
+
+	//second.add_to_tail(rand() % 10);
+	//second.show();
+
+	//s_list<int> third(second);
+	//third.show();
+
+	//s_list<int> fourth;
+	//fourth = first;
+	//fourth.show();
+
+	first.sort();
+	first.show();
+
+	//first.reverse();
+	//first.show();
+
+	//size = fourth.size();
+	//for (int i = 0; i < size; i++) {
+	//	int value = fourth[i];
+	//	//cout << value << " ";
+	//}
+	//cout << endl;
+
+	//first.delete_at(3);
+	//first.show();
+
+	//first.insert_at(4, 4);
+	//first.show();
+
+	//first.delete_all();
+	//first.show();
+
+	//first.splice(third);
+	//first.show();
+	//first.splice(fourth);
+	//first.show();
+
+	//size_t result = first.find(10);
+	//if (result != 0)
+	//	cout << "The number ten is in position: " << result << endl;
+	//else
+	//	cout << "Numbers ten not found" << endl;
+
+	//first.find_and_replace(10, 1000);
+
+	//for (auto it = first.begin(); it != first.end(); ++it)
+	//	cout << *it << " ";
+
+	return 0;
+}

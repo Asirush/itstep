@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+/* https://msdn.microsoft.com/ru-ru/library/c401y1kb.aspx */
+
+template<typename T1>
+class calc {
+	T1 a, b;
+public:
+	calc(T1 a, T1 b) {
+		this->a = a;
+		this->b = b;
+	}
+	T1 add() { return a + b; }
+	void add_show() {
+		cout << a << " + " << b << " = " << a + b << endl;
+	}
+
+};
+
+
+template <>				//Обозначили специализацию
+class calc<char*> {     //В угловых скобках тип для корректировки поведения
+	char* a, * b;
+public:
+	calc(const char*, const char*); //Прототип специализированного конструктора
+	void add_show();				//Прототип специализированного метода класса
+	~calc();						//Прототип деструктора специализированного класса
+};
+
+
+/* Конструктор специализированного класса */
+calc<char*>::calc(const char* s1, const char* s2) {
+	unsigned len1 = strlen(s1);
+	unsigned len2 = strlen(s2);
+	a = new char[len1 + 1];  //Выделили нужное число памяти
+	strcpy_s(a, len1 + 1, s1);
+	b = new char[len2 + 1];  //Выделили нужное число памяти
+	strcpy_s(b, len2 + 1, s2);
+}
+
+/* Деструктор специализированного класса */
+calc<char*>::~calc() {
+	delete[]a;  //Почистили память.
+	delete[]b;  //Почистили память.
+}
+
+/* Прототип специализированного метода класса */
+void calc<char*>::add_show() {
+	cout << a << " + " << b << " = " << a << b << endl;
+}
+
+int main()
+{
+
+	calc<int> num(1, 2);
+	num.add_show();
+
+	calc<char*> num2("1", "2");
+	num2.add_show();
+
+	cin.get();
+}
