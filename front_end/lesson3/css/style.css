@@ -35,8 +35,32 @@
     text-align: center;
 }
 
+.parametrs:hover{
+    width: 300px;
+    height: 300px;
+    transition: all 1s linear 0s;
+    /*transform: rotate(720deg);   вращение обьекта*/
+    /*transform: skew(10deg, 0);   наклон обьекта*/
+    /*transform: scale(2) rotate(720deg); так же можно использовать оба параметра*/
+    /*transform: translate(0px, 100px); увеличение*/
+}
+
 .parametrs img {
     height: 79px;
+    transition-property: height;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 0.1;
+    transition: all 2s linear 0s;
+}
+
+.parametrs:hover img{
+    height: 150px;
+    transition-property: height;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 0.1;
+    transition: all 2s linear 0s;
 }
 
 .parametrs-menu {
