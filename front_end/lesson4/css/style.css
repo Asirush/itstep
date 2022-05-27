@@ -125,6 +125,10 @@ ul.nav {
     display: inline-block;
 }
 
+.examples div{
+    vertical-align: middle;
+}
+
 .nav a:link{color: black;}
 .nav a:visited{color: black;}
 .nav a:active{color: blue;}
@@ -132,11 +136,14 @@ ul.nav {
 .nav a{text-decoration: none;}
 
 .client_img {
+    padding: 10px;
     width: 40%;
+    display: inline-block;
 }
 
-.text-box {
+.text_box {
     width: 50%;
+    display: inline-block;
 }
 
 .img-r{
