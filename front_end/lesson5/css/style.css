@@ -1,0 +1,219 @@
+body#main{
+    /*filters
+    
+    filter: blur(5px);
+    filter: brightness(0);
+    filter: contrast(40%);
+    filter: drop-shadow(20px 3px 5px blue);
+    box-shadow: 20px 0px 0px 0px red;
+    filter: grayscale();
+    filter:hue-rotate(180deg);
+    filter: invert(100%);
+    filter:opacity(10%);
+    filter:saturate(15);
+    filter: sepia(80%);*/
+}
+
+.cont {
+    width: 1170px;
+    margin: auto;
+ /*   border: 2px solid #ebebeb;*/
+    padding: auto;
+}
+
+.sign {
+    font-size: 14px;
+    color: #0099ae;
+    border: 1px solid #0099ae;
+    padding: 10px 25px;
+    width: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sign:hover {
+    outline: none;
+    background: 0 0;
+    box-shadow: none;
+    color: #01707f;
+    border-color: #01707f;
+}
+
+.text-l {
+    /*float: left;*/
+    width: 41%;
+    padding: 82px 0px;
+    vertical-align: top;
+}
+
+.parametrs {
+    animation: menu 1s 1s both;
+    align-items: center;
+    width: 33%;
+    text-align: center;
+}
+
+.parametrs:nth-child(2){ /*also could be "odd", "even" or "2n" */
+    animation: menu 1s 2s both;
+}
+
+.parametrs:nth-child(3){
+    animation: menu 1s 3s both;
+}
+
+/*
+.parametrs:hover{
+    width: 300px;
+    height: 300px;
+    transition: all 1s linear 0s;
+    /*transform: rotate(720deg);   Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð±ÑŒÐµÐºÑ‚Ð°*/
+    /*transform: skew(10deg, 0);   Ð½Ð°ÐºÐ»Ð¾Ð½ Ð¾Ð±ÑŒÐµÐºÑ‚Ð°*/
+    /*transform: scale(2) rotate(720deg); Ñ‚Ð°Ðº Ð¶Ðµ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð¾Ð±Ð° Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°*/
+    /*transform: translate(0px, 100px); ÑƒÐ²ÐµÐ»Ð¸Ñ‡ÐµÐ½Ð¸Ðµ
+    
+}*/
+
+
+.parametrs img {
+    height: 79px;
+    transition-property: height;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 0.1;
+    transition: all 1s linear 0s;
+}
+
+/*.parametrs:hover img{
+    height: 150px;
+    transition-property: height;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 0.1;
+    transition: all 1s linear 0s;
+}*/
+
+.parametrs-menu {
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.slider {
+    background-image: url(../img/slider-bg.png);
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    /*opacity: 0.5;  Ð¿Ñ€Ð¾Ð·Ñ€Ð°Ñ‡Ð½Ð¾ÑÑ‚ÑŒ*/
+}
+/*
+.slider:hover{
+    opacity: 1; /*Ð²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ð¿Ñ€Ð¸ Ð½Ð°Ð²ÐµÐ´ÐµÐ½Ð¸Ð¸
+}
+*/
+
+.menu {
+    vertical-align: top;
+    padding: 20px 0px;
+    width: 80%;
+    text-align: right;
+}
+
+ul.nav li {
+    list-style: none;
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+ul.nav {
+    margin-block-start: 0px;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+}
+
+.inline-b{
+    display: inline-block;
+}
+
+.examples div{
+    vertical-align: middle;
+}
+
+.nav a:link{color: black;}
+.nav a:visited{color: black;}
+.nav a:active{color: blue;}
+.nav a:hover{text-shadow: 0px 0px 10px black;}
+.nav a{text-decoration: none;}
+
+.client_img {
+    padding: 10px;
+    width: 40%;
+    display: inline-block;
+}
+
+.text_box {
+    width: 50%;
+    display: inline-block;
+}
+
+.img-r{
+    position: relative;
+}
+
+.sun, .house, .birds1, .birds2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.right{
+    text-align: right;
+}
+
+.sun {top: 168px;left: 7px;}
+.house{top: 182px;left: 200px;}
+.birds1{top: 143px;left: 49px;}
+.birds2{top: 171px;left: 515px;}
+
+img.hill{
+    animation:hill 0.5s 1 /*<- infinite*/ linear 0s;
+}
+
+img.sun{animation: sun 0.6s 1 both;}
+img.house{animation: house 0.5s 0.6s both;}
+img.birds1{animation: birds1 0.6s 1 both;}
+img.birds2{animation: birds2 0.6s 1 both;}
+
+@keyframes hill{
+    0% {transform: translate(0px, -1000px);}
+    100% {transform: translate(0px, 0px);}
+}
+
+@keyframes sun {
+    0%{opacity: 0; transform: scale(0);}
+    100%{opacity: 1; transform: scale(1);}
+}
+
+@keyframes house {
+    0%{opacity: 0; transform: translateY(-2000px);}
+    60%{opacity: 1; transform: translateY(30px);}
+    85%{opacity: 1; transform: translateY(-10px);}
+    100%{opacity: 1; transform: translateY(0px);}
+}
+
+@keyframes birds1 {
+    0%{opacity: 0; transform: translate(-2000px);}
+    60%{opacity: 1; transform: translate(30px);}
+    85%{opacity: 1; transform: translate(-10px);}
+    100%{opacity: 1; transform: translate(0px);}
+}
+
+@keyframes birds2 {
+    0%{opacity: 0; transform: translate(2000px);}
+    60%{opacity: 1; transform: translate(-30px);}
+    85%{opacity: 1; transform: translate(10px);}
+    100%{opacity: 1; transform: translate(0px);}
+}
+
+@keyframes menu {
+    0%{opacity: 0; transform: scale(0);}
+    100%{opacity: 1; transform: scale(1);}
+}
