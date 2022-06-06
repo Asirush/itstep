@@ -1,0 +1,26 @@
+#pragma once
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class car
+{
+private:
+	const float tradeMargin = 30;		// Торговая наценка (в %)
+	const float valueAddedTax = 12;		// Ставка НДС
+	float price;						// Цена для диллеров
+	std::string release;				// Год и месяц выпуска
+protected:
+	// Наименование торгового центра
+	const string SHOPING_ROOM = "Shopping room in Almaty";
+	// Вычисляет розничную цену
+	float getFullPrice();
+public:
+	car();
+	car(std::string release, float price);
+	std::string getRelease();
+	virtual void printToString();
+	virtual void printCheck();
+	virtual ~car();
+};
