@@ -3,7 +3,7 @@
 #include <iostream>
 #include "house_animals.h"
 
-class cat : house_animals
+class cat : public house_animals
 {
 	std::string name;
 	std::string colour;
