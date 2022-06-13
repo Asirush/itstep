@@ -1,0 +1,45 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+
+	const char* FILENAME{ "test.txt" };
+
+	// Запись данных в файл.
+	ofstream fout(FILENAME);
+	fout << "Hello world!\nFirst test\nSecond test\nThird test" << endl;
+
+	// Чтение элемента данных из файла
+	string str;
+	ifstream sfin(FILENAME);
+	sfin >> str;
+	cout << str << endl;
+
+	// Построчное чтение файла
+	const auto CSIZE{ 0xFF };
+	char cstr[CSIZE];
+	ifstream cfin(FILENAME);
+	if (cfin.good())
+		while (cfin.getline(cstr, CSIZE))
+			cout << cstr << endl;
+
+	// Чтение всего файла
+	ifstream ofin;
+	ofin.open(FILENAME, ios::in);
+	ofin.seekg(0, ofin.end);
+	const auto LENGHT{ ofin.tellg() };
+	ofin.seekg(0, ofin.beg);
+
+	char* buffer = new char[LENGHT] {0};
+	if (ofin.is_open())
+		ofin.read(buffer, LENGHT);
+	cout << buffer << endl;
+	delete[] buffer;
+	ofin.close();
+
+	return 0;
+}

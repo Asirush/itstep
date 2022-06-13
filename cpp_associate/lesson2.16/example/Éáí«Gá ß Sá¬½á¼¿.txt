@@ -1,0 +1,323 @@
+https://msdn.microsoft.com/ru-ru/library/k7hz8258.aspx (Класс basic_ifstream)
+https://msdn.microsoft.com/ru-ru/library/7z434859.aspx (Класс basic_ofstream)
+https://msdn.microsoft.com/ru-ru/library/tzf8k3z8.aspx (Класс basic_filebuf)
+http://www.cplusplus.com/reference/fstream/fstream/ (class <fstream> std::fstream)
+
+/* --------------------------------------------------------------------------------------------------------
+
+stdio.h — работа с файлами
+
+rename (char * oldname, char * newname)
+Переименовывает файл.
+oldname — путь и текущее имя файла.
+newname — путь и новое имя файла.
+Функция возвращает 0, если имя файла было успешно изменено, и ненулевое значение, если замена не произошла.
+
+int remove(const char * filename) Удаляет файл.
+filename — путь и имя файла.
+Функция возвращает 0, если имя файл был успешно удален, и ненулевое значение, если удаление не произошло.
+
+io.h — поиск файлов
+
+_findfirst(char * path, _finddata_t * fileinfo) Находит файлы по указанному пути, соответсвтующие маске.
+Примечание:
+Маска — строка, критерий поиска, содержащая символы
+* (любая последовательность любых символов) и
+? (любой один символ)
+path — строка, в которой содержится комбинация пути и маски.
+fileinfo — указатель на объект структуры, в который запишется информация о найденном файле.
+Структура содержит следующие поля:
+1. unsigned attrib — содержит информацию об атрибутах файла.
+- _A_NORMAL — Обычный файл без запретов на чтение или запись.
+- _A_RDONLY — Файл только для чтения.
+- _A_HIDDEN — Скрытый файл.
+- _A_SYSTEM — Системный файл.
+- _A_SUBDIR — Директория.
+- _A_ARCH — Архивный файл.
+2. time_t time_create — время/дата создания файла (равно –1 для FAT систем).
+3. time_t time_access — время/дата последнего открытия файла (равно –1 для FAT систем).
+4. time_t time_write — время/дата последнего редактирования файла.
+5. _fsize_t size — размер файла.
+6. char name[260] — имя файла.
+Если всё пройдет успешно, информация о первом найденном файле запишется в объект структуры _finddata_t.
+При этом в оперативной памяти сформируется "список", обладающий внутренним указателем, который
+изначально будет установлен на первом найденном файле . В этом случае функция вернет уникальный номер,
+связанный с полученной группой файлов. Если поиск завершится неудачей, функция вернет –1.
+
+_findnext(long done, _finddata_t * fileinfo) Функция осуществляет переход на следующий найденный файл в группе.
+done — уникальный номер группы файлов в памяти.
+fileinfo — указатель на объект структуры, в который запишется информация о следующем найденном файле.
+Если достигнут конец списка файлов, функция вернет –1.
+
+_findclose(long done) Функция очищает память от группы найденных файлов.
+done — уникальный номер группы файлов в памяти.
+
+Библиотека direct.h
+
+int _mkdir( const char *dirname ) Создает директорию по указанному пути.
+dirname — Путь и имя для создаваемой директории.
+
+int _rmdir( const char *dirname ) Удаляет директорию по указанному пути.
+dirname — Путь и имя для удаляемой директории.
+Обе функции возвращают –1 в случае ошибки.
+
+/* --------------------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+struct Man
+{
+	char str[255] = {0}; //Имя
+	int age; //Возраст
+};
+
+int main(int argc, char * argv[])
+{		
+	Man A, B; //Создание объектов структуры
+	
+	//Запись в объект A
+	cout << "\nEnter name:\n"; //информации, полученной с клавиатуры
+	cin >> A.str;
+	cout << "\nEnter age:\n";
+	cin >> A.age;
+
+	//открытие файла на запись
+	FILE *f;
+	fopen_s(&f, "Test.txt", "w+");
+	if (!f) exit(0);
+	//запись объекта А в файл
+	fwrite(&A, sizeof(Man), 1, f);
+	fclose(f);
+
+	//открытие файла на чтение
+	fopen_s(&f, "Test.txt", "r+");
+	if (!f) exit(0);
+	//считывание содержимого файла
+	//в объект B
+	fread_s(&B, sizeof(Man), sizeof(Man), 1, f);
+	//открытие файла на запись
+	fclose(f);
+	//показ результата на экран
+	cout << endl << "Name - " << B.str << endl << endl << "Age - " << B.age << endl << endl;
+
+	system("pause");
+
+	return 0;
+}
+
+/* --------------------------------------------------------------------------------------------------------
+
+Константа 	Описание
+ios_base::in 	открыть файл для чтения
+ios_base::out 	открыть файл для записи
+ios_base::ate 	при открытии переместить указатель в конец файла
+ios_base::app 	открыть файл для записи в конец файла
+ios_base::trunc 	удалить содержимое файла, если он существует
+ios_base::binary 	открытие файла в двоичном режиме
+
+   -------------------------------------------------------------------------------------------------------- */
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
+int main(int argc, char * argv[])
+{		
+	ofstream ofs("Test.txt", ios_base::out);
+	if (!ofs.bad())
+	{
+		ofs << "Writing to a basic_ofstream object..." << endl;
+		ofs.close();
+	}
+
+
+	ifstream ifs("Test.txt", ios::in);
+	if (!ifs.bad())
+	{
+		// Dump the contents of the file to cout.  
+		cout << ifs.rdbuf();
+		ifs.close();
+	}
+
+	system("pause");
+
+	return 0;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
+int main(int argc, char * argv[])
+{		
+	ofstream ofs("Test.txt", ios_base::out);
+	if (!ofs.bad())
+	{
+		char *first = "First line for write...";
+		char *second = "Second line for write...";
+		ofs << first << endl;
+		ofs << second << endl;
+		ofs.close();
+	}
+
+	ifstream ifs("Test.txt", ios::in);
+	if (!ifs.bad())
+	{
+		char buffer[255];
+		while (!ifs.eof())
+		{
+			ifs.getline(buffer, 255);
+			cout << buffer << endl;
+		}
+		ifs.close();
+	} 
+
+	system("pause");
+
+	return 0;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
+int main(int argc, char * argv[])
+{		
+	ofstream ofs("Test.txt", ios_base::out);
+	if (!ofs.bad())
+	{
+		const char *buffer = "Writing using the write method...";
+		ofs.write(buffer, sizeof(char) * strlen(buffer));
+		ofs.close();
+	}
+
+
+	ifstream ifs("Test.txt", ios::in);
+	if (!ifs.bad())
+	{
+		char *buffer;
+		filebuf *pbuf = ifs.rdbuf();
+		streamsize size = pbuf->pubseekoff(0, ifs.end);
+		pbuf->pubseekoff(0, ifs.beg);
+
+		buffer = new char[size + 1];
+
+		ifs.read(buffer, size);
+		ifs.close();
+
+		buffer[size] = '\0';
+
+		cout << buffer << endl;
+	}
+
+	system("pause");
+
+	return 0;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+class MyClass
+{
+public:
+	MyClass();
+	MyClass(const char *fname, const char *lname, const int age);
+	void write(ofstream& os);
+	void read(ifstream& is);
+	void tiString();
+	~MyClass();
+
+private:
+	const int str_size = 255;
+	char *first_name;
+	char *last_name;
+	int age;
+};
+
+MyClass::MyClass()
+{
+	first_name = new char[str_size];
+	last_name = new char[str_size];
+	age = 0;
+}
+
+MyClass::MyClass(const char * fname, const char * lname, const int age) : MyClass()
+{
+	if (strlen(fname) < str_size && strlen(lname) < str_size)
+	{
+		strcpy_s(this->first_name, strlen(fname) + 1, fname);
+		strcpy_s(this->last_name, strlen(lname) + 1, lname);
+	}
+	this->age = age;
+}
+
+void MyClass::write(ofstream & os)
+{
+	os.write(this->first_name, sizeof(char) * str_size);
+	os.write(this->last_name, sizeof(char) * str_size);
+	os.write(reinterpret_cast<char*>(&age), sizeof(int));
+}
+
+void MyClass::read(ifstream & is)
+{
+	is.read(this->first_name, sizeof(char) * str_size);
+	is.read(this->last_name, sizeof(char) * str_size);
+	is.read(reinterpret_cast<char*>(&age), sizeof(int));
+}
+
+void MyClass::tiString()
+{
+	cout << first_name << endl;
+	cout << last_name << endl;
+	cout << age << endl;
+}
+
+MyClass::~MyClass()
+{
+	delete[] first_name;
+	delete[] last_name;
+	age = 0;
+}
+
+int main(int argc, char * argv[])
+{		
+	MyClass first("Ivan", "Ivanov", 20);
+	ofstream ofs("Test.txt", ios_base::binary | ios_base::out);
+	if (!ofs.bad())
+	{
+		first.write(ofs);
+		ofs.close();
+	}
+
+	ifstream ifs("Test.txt", ios_base::binary | ios::in);
+	if (!ifs.bad())
+	{
+		MyClass second;
+		second.read(ifs);
+		ifs.close();
+		second.tiString();
+	}
+
+	system("pause");
+
+	return 0;
+}
