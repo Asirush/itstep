@@ -1,0 +1,297 @@
+/*
+Три основных вида ошибок:
+1. Деление на ноль.
+2. Отстутствие свободной памяти.
+3. Ошибка доступа к внешним ресурсам.
+
+-- Ошибка среды исполнения.
+---------------------------------------------------------------------------
+https://docs.microsoft.com/en-us/windows/desktop/debug/system-error-codes
+-------------------------------------------------------------------------*/
+
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+#define DIVISION_BY_ZERO 1;
+#define OUT_OF_MEMORY 2;
+#define FILE_NOT_FOUND 3;
+
+int main()
+{
+	int a = 9, b = 0;
+	if (b == 0)
+		return DIVISION_BY_ZERO;
+
+	float *mem = new float;
+	if (mem == nullptr)
+		return OUT_OF_MEMORY;
+
+	ifstream ifs("test.txt");
+	if (!ifs)
+		return FILE_NOT_FOUND;
+
+	// Прочий код
+
+	return 0;
+}
+
+/*--------------------------------------------------------------------------------
+http://en.cppreference.com/w/cpp/language/try_catch
+--------------------------------------------------------------------------------*/
+
+int main()
+{
+	try
+	{
+		int a = 9, b = 0;
+		if (b == 0)
+			throw DIVISION_BY_ZERO;
+
+		float *mem = new float;
+		if (mem == nullptr)
+			throw OUT_OF_MEMORY;
+
+		ifstream ifs("test.txt");
+		if (!ifs)
+			throw FILE_NOT_FOUND;
+
+		// Прочий код
+
+	}
+	catch (int err)
+	{
+		switch (err)
+		{
+		case DIVISION_BY_ZERO: {/* Необходимо исправить данные */}
+		case OUT_OF_MEMORY: {/* Необходимо очистить память */}
+		case FILE_NOT_FOUND: {/* Необходимо найти файл */}
+		default:
+			break;
+		}
+	}
+	catch (...)
+	{
+		/* Возникла другая ошибка */
+	}
+	finally {
+		/* Код обязательный к исполнению */
+	}
+
+	return 0;
+}
+
+/*--------------------------------------------------------------------------------*/
+
+#include <Windows.h>
+#include <iostream>
+using namespace std;
+
+#define NO_ERRORS 0
+#define SHOT_BELOW_THE_HORIZON 1
+#define HITTING_BELOW_THE_HORIZON 2
+
+// shot(x) = -x^2 + 2x
+float shot(float x)
+{
+	return (-1) * x * x + 2 * x;
+}
+
+int main()
+{
+	float x;
+	HDC hDC = GetDC(GetConsoleWindow());
+	HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+	SelectObject(hDC, Pen);
+	MoveToEx(hDC, 0, 85, NULL);
+	LineTo(hDC, 200, 85);
+	MoveToEx(hDC, 100, 0, NULL);
+	LineTo(hDC, 100, 170);
+	for (x = -2.0f; x <= 4.0f; x += 0.01f) // O(100,85) - center
+	{
+		MoveToEx(hDC, 10 * x + 100, -10 * shot(x) + 85, NULL);//10 - scale
+		LineTo(hDC, 10 * x + 100, -10 * shot(x) + 85);
+	}
+	system("pause");
+	return 0;
+}
+
+/*--------------------------------------------------------------------------------*/
+
+#include <Windows.h>
+#include <iostream>
+using namespace std;
+
+//dderror #define NO_ERROR 0L
+#define SHOT_BELOW_THE_HORIZON 1
+#define HITTING_BELOW_THE_HORIZON 2
+
+// shot(x) = -x^2 + 2x
+int shot(float x, float& y)
+{
+	if (x == 0)
+	{
+		y = 0;
+		return NO_ERROR;
+	}
+	else
+	{
+		if (x < 0)
+		{
+			y = 0;
+			return SHOT_BELOW_THE_HORIZON;
+		}
+		else
+		{
+			y = (-1) * x * x + 2 * x;
+			if (y < 0)
+			{
+				y = 0;
+				return HITTING_BELOW_THE_HORIZON;
+			}
+		}
+	}
+}
+
+int main()
+{
+	float x = 0;
+	HDC hDC = GetDC(GetConsoleWindow());
+	HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+	SelectObject(hDC, Pen);
+	MoveToEx(hDC, 0, 85, NULL);
+	LineTo(hDC, 200, 85);
+	MoveToEx(hDC, 100, 0, NULL);
+	LineTo(hDC, 100, 170);
+	for (x = -2.0f; x <= 4.0f; x += 0.01f) // O(100,85) - center
+	{
+		float y = 0;
+		int err = shot(x, y);
+		if (err)
+		{
+			MoveToEx(hDC, 10 * x + 100, -10 * y + 85, NULL);//10 - scale
+			LineTo(hDC, 10 * x + 100, -10 * y + 85);
+		}
+	}
+	system("pause");
+	return 0;
+}
+
+/*--------------------------------------------------------------------------------*/
+
+#include <Windows.h>
+#include <iostream>
+using namespace std;
+
+//dderror #define NO_ERROR 0L
+#define SHOT_BELOW_THE_HORIZON 1
+#define HITTING_BELOW_THE_HORIZON 2
+
+// shot(x) = -x^2 + 2x
+float shot(float x)
+{
+	if (x == 0)
+		return 0;
+
+	if (x < 0)
+		throw SHOT_BELOW_THE_HORIZON;
+
+	float y = (-1) * x * x + 2 * x;
+	if (y < 0)
+		throw HITTING_BELOW_THE_HORIZON;
+
+	return y;
+}
+
+int main()
+{
+	float x = 0;
+	HDC hDC = GetDC(GetConsoleWindow());
+	HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+	SelectObject(hDC, Pen);
+	MoveToEx(hDC, 0, 85, NULL);
+	LineTo(hDC, 200, 85);
+	MoveToEx(hDC, 100, 0, NULL);
+	LineTo(hDC, 100, 170);
+	for (x = -2.0f; x <= 4.0f; x += 0.01f) // O(100,85) - center
+	{
+		try
+		{
+			MoveToEx(hDC, 10 * x + 100, -10 * shot(x) + 85, NULL);//10 - scale
+			LineTo(hDC, 10 * x + 100, -10 * shot(x) + 85);
+		}
+		catch (...)
+		{
+			// Неизвестная ошибка
+		}
+	}
+	system("pause");
+	return 0;
+}
+
+/*--------------------------------------------------------------------------------
+https://ru.cppreference.com/w/cpp/error/exception
+https://docs.microsoft.com/ru-ru/cpp/standard-library/exception-class?view=vs-2017
+----------------------------------------------------------------------------------*/
+
+#include <iostream>
+using namespace std;
+
+class MyException : exception
+{
+public:
+	MyException();
+	MyException(const char *str);
+	MyException(const MyException &obj);
+	MyException& operator=(const exception &obj);
+	MyException& operator=(const MyException &obj);
+	virtual const char* what() const;
+	virtual ~MyException();
+private:
+	string message;
+};
+
+MyException::MyException() {}
+
+MyException::MyException(const char *str) : message(string(str)) {}
+
+MyException::MyException(const MyException & obj) : message(obj.message) {}
+
+MyException & MyException::operator=(const exception & obj)
+{
+	this->message = string(obj.what());
+	return *this;
+}
+
+MyException & MyException::operator=(const MyException & obj)
+{
+	this->message = obj.message;
+	return *this;
+}
+
+const char * MyException::what() const
+{
+	return message.c_str();
+}
+
+MyException::~MyException() {}
+
+int main()
+{
+	try
+	{
+		int first = 5, second = 0;
+		if (second == 0)
+			throw MyException("Division by zero");
+	}
+	catch (MyException& exp)
+	{
+		cout << exp.what() << endl;
+	}
+	catch (...)
+	{
+		cout << "Other exception" << endl;
+	}
+
+	return 0;
+}
