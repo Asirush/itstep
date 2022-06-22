@@ -1,0 +1,38 @@
+class A
+{
+	virtual void show(void) {
+		cout << "Class A" << endl;
+	}
+};
+
+class B
+{
+	virtual void show(void) {
+		cout << "Class B" << endl;
+	}
+};
+
+int main()
+{
+	// Приведение типов в стиле С
+	double d;
+	d = (double) 10 / 3;
+
+	const int *a = 0;
+	int *c = const_cast<int*> (a);
+
+	A *obj_a;
+	B *obj_b;
+	obj_a = dynamic_cast<A*> (obj_b);
+
+	/* Нельзя преобразовывать число в указатель.
+	Для классов должен быть определен метод приведения типа. */
+	int y = 4;
+	double x = static_cast<double> (y);
+
+
+	int *z = reinterpret_cast<int*> (y);
+		
+
+	return 0;
+}
