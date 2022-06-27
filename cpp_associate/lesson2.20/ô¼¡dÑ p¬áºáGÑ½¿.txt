@@ -1,0 +1,118 @@
+/*
+Получение ресурса есть инициализация (англ. Resource Acquisition Is Initialization (RAII)) — программная идиома объектно-ориентированного программирования, смысл которой заключается в том, что с помощью тех или иных программных механизмов получение некоторого ресурса неразрывно совмещается с инициализацией, а освобождение — с уничтожением объекта.
+
+https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D0%B0_%D0%B5%D1%81%D1%82%D1%8C_%D0%B8%D0%BD%D0%B8%D1%86%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F
+*/
+
+#include <iostream>
+#include <string>
+#include <memory>
+
+using namespace std;
+
+class MyClass
+{
+private:
+	string name;
+	int age;
+public:
+	MyClass() {}
+	MyClass(string name, int age) : name(name), age(age) {}
+	void toString() { cout << name << " " << age << endl; }
+	friend ostream& operator<<(ostream& os, const MyClass & obj)
+	{
+		return os << obj.name << " " << obj.age << endl;
+	}
+	virtual ~MyClass() {};
+};
+
+
+template <typename T>
+class smart_pointer
+{
+private:
+	T *pointer;
+public:
+	smart_pointer(T *obj) : pointer(obj) {}
+	T* operator->() { return pointer; }
+	T& operator* () { return *pointer; }
+	virtual ~smart_pointer() { delete pointer; }
+};
+
+
+int main(int argc, char * argv[])
+{
+	if (true)
+	{
+		// Создаем MyClass и помещаем в "умный указатель"
+		smart_pointer<MyClass> pMyClass(new MyClass("Ivan", 25));
+
+		// Обращаемся к методу класса MyClass посредством селектора
+		pMyClass->toString();
+
+		// Выводим объект по указателю в поток
+		cout << *pMyClass << endl;
+	} // по выходу из области видимости объект MyClass будет удален
+
+	if (true)
+	{
+		// В замену устаревшего auto_ptr
+		// http://ru.cppreference.com/w/cpp/memory/unique_ptr
+		// https://msdn.microsoft.com/en-us/library/hh279676.aspx
+
+		// unique_ptr нельзя копировать
+
+		unique_ptr<int> first(new int(10));
+		cout << *first << endl;
+	}
+
+	if (true)
+	{
+		// Это самый популярный и самый широкоиспользуемый умный указатель.
+		// В отличии от рассмотренных выше указателей, shared_ptr реализует подсчет
+		// ссылок на ресурс. Ресурс освободится тогда, когда счетчик ссылок на него будет равен 0.
+		// http://ru.cppreference.com/w/cpp/memory/shared_ptr
+		// https://msdn.microsoft.com/en-us/library/bb982026.aspx
+
+		shared_ptr<int> x_ptr(new int(42));
+		shared_ptr<int> y_ptr(new int(13));
+
+		// после выполнения данной строчки, ресурс
+		// на который указывал ранее y_ptr (int(13)) освободится,
+		// а на int(42) будут ссылаться оба указателя
+		y_ptr = x_ptr;
+
+		std::cout << *x_ptr << "\t" << *y_ptr << std::endl;
+	}
+
+	if (true)
+	{
+		// Данный класс позволяет разрушить циклическую зависимость, которая, несомненно,
+		// может образоваться при использовании shared_ptr.
+		// http://ru.cppreference.com/w/cpp/memory/weak_ptr
+		// https://msdn.microsoft.com/en-us/library/hh279672.aspx
+
+		/*
+		struct A {weak_ptr<B>}
+		*/
+		struct B;
+		struct A
+		{
+			shared_ptr<B> my_ptrB;
+		};
+		struct B
+		{
+			shared_ptr<A> my_ptrA;
+		};
+
+		A strctA;
+		B strctB;
+
+		strctA.my_ptrB = make_shared<B>(strctB);
+		strctB.my_ptrA = make_shared<A>(strctA);
+	}
+
+	system("pause");
+
+	return 0;
+}

@@ -1,0 +1,77 @@
+#include <iostream>
+#include <array>
+
+using namespace std;
+
+/*
+
+http://www.solarix.ru/for_developers/cpp/stl/stl.shtml
+
+Итераторы
+---
+Итератор (iterator, англ. перечислитель) – это такой объект, который
+позволяет перебирать элементы контейнера, переходя от одного элемента – к другому.
+Итераторы функционально схожи с указателями. Хотя итераторы и являются формой
+указателя, но их функциональность отличается.
+Всего имеется пять различных категорий итераторов:
+- InputIterator (Входной)
+- OutputIterator (Выходной)
+- ForwardIterator (Однонаправленный)
+- BidirectionalIterator (Двунаправленный)
+- RandomAccessIterator (Произвольного доступа)
+
+Константные и реверсивные итераторы
+---
+Реверсивные итераторы
+---
+Реверсивные итераторы предназначены для обхода массива с конца.
+Реверсивные итераторы возвращают методы
+- rbegin()
+- rend().
+
+Константные итераторы
+---
+В каждом контейнере определены два типа итераторов:
+- iterator
+- const_iterator
+
+Для получения константного итератора используются следующие методы:
+- cbegin()
+- cend()
+- crbegin()
+- crend()
+
+*/
+
+
+int main(int argc, char * argv[])
+{
+	array<int, 10> mas{};
+
+	for (size_t i = 0; i < mas.size(); i++)
+		mas[i] = i;
+
+	for (auto elem : mas)
+		cout << elem << " ";
+	cout << endl;
+
+	for (auto iter = mas.begin(); iter != mas.end(); iter++)
+		cout << *iter << " ";
+	cout << endl;
+
+	array<int, 10>::iterator first;
+	array<int, 10>::iterator last;
+	first = mas.begin();
+	last = mas.end();
+	while (first != last)
+	{
+		cout << *first << " ";
+		first++;
+	}
+	cout << endl;
+
+
+	system("pause");
+
+	return 0;
+}
