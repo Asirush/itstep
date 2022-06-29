@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+/*
+https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=vs-2017
+*/
+
+int summing(int first, int second)
+{
+	return first + second;
+}
+
+int main(int argc, char * argv[])
+{
+	// функция времени исполнения (callback)
+	int (*sum)(int, int) = summing;
+	cout << sum(10, 5) << endl;
+
+	// лямда времени исполнения (lambda callback)
+	auto sum_second = [sum](int a, int b)->int {return sum(a, b); };
+	cout << sum_second(11, 5) << endl;
+
+	return 0;
+}

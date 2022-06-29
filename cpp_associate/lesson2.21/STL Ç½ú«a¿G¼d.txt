@@ -1,0 +1,169 @@
+#include <iostream>
+#include <array>
+
+using namespace std;
+
+/*
+
+http://www.solarix.ru/for_developers/cpp/stl/stl.shtml
+
+Библиотека обобщенных алгоритмов (algorithm)
+
+Общие сведения
+
+Алгоритмы стандартной библиотеки STL разделяются на следующие категории:
+- Не изменяющие последовательные операции
+- Изменяющие последовательные операции
+- Операции сортировки
+- Бинарные операции поиска
+- Операции слияния
+- Кучи
+- Операции отношений
+
+Немодифицирующие алгоритмы
+---
+*** for_each()
+for_each(first, last, func) - применение функтора для каждой итерации
+
+*** find()
+find(first, last, value) - ищет элемент, равный value
+find_if(first, last, pred) - ищет элемент, для которого предикат pred возвращает значение true
+find_if_not(first, last, pred) - ищет элемент, для которого предикат pred возвращает значение false
+
+*** count()
+count(first, last, value) - возвращает, сколько раз элемент со значением value входит в последовательность, заданную итераторами first и last.
+count_if(first, last, pred) - возвращает, сколько раз предикат pred возвращает значение true.
+
+*** search()
+search(first, last, s_first, s_last); - поиск первого вхождения последовательности [s_first, s_last) в последовательности [first, last - [s_last-s_first]).
+search(first, last, s_first, s_last, pred); - с предикатом.
+search_n(first, last, count, value); - первое вхождение одинаковых элементов длиною count, имеющих значение value.
+ 
+*** equal()
+equal(first1, last1, first2) - Возвращает true, если в двух диапазонах элементы одинаковы. Первый диапазон [first1, last1), второй начинается с first2.
+equal(first1, last1, first2, pred) - с предикатом.
+
+Модифицирующие алгоритмы
+---
+*** copy()
+copy(first, last, d_first); - копирует элементы из диапазона [first, last) в диапазон, начинающийся с d_first.
+copy_if(first, last, d_first, pred); - копирует только те элементы, для которых предикат pred возвращает true.
+
+*** fill()
+fill(first, last, value) - присваивает заданное значение value всем элементам диапазона [first, last).
+
+*** reverse()
+reverse(first, last) - меняет порядок следования элементов в диапазоне [first, last) на противоположный.
+
+*** replace()
+replace(first, last, old, new) - заменяет элементы, равные old.
+replace_if(first, last, pred, new) - заменяет элементы, для которых предикат pred возвращает true.
+
+*** remove()
+remove(first, last, value) - удаляет все элементы, равные value.
+remove_if(first, last, pred) - удаляет все элементы, для которых предикат pred возвращает true.
+
+*** transform() Применяет заданную функцию к одному диапазону и сохраняет результат в другой диапазон, начинающийся с d_first.
+transform(first1, last1, d_first, unary_op); - унарная операция unary_op применяется к диапазону [first1, last1).
+transform(first1, last1, first2, d_first, binary_op); - бинарная операция binary_op применяется к элементам из двух диапазонов: [first1, last1) и начинающемуся с first2.
+
+*** iter_swap()
+iter_swap(it1, it2) - обменивает объекты, на которые указывают два итератора it1 и it2.
+
+*** unique() Удаляет все последовательно повторяющиеся элементы из диапазона [first, last)
+и возвращает итератор на элемент, следующий за последним элементом нового диапазона. Удаление
+производится путем сдвига диапазона таким образом, что элементы которые должны быть удалены
+будут перезаписаны. Относительный порядок элементов сохранится, а размер контейнера не изменяется.
+Итераторы, указывающие на элементы после нового диапазона становятся недействительными.
+unique(first, last);
+unique(first, last, pred);
+
+*** unique_copy() Копирует элементы из диапазона [first, last), в диапазон, начинающийся с d_first,
+так, чтобы в нём не было последовательных одинаковых элементов.
+unique_copy(first, last, d_first);
+unique_copy(first, last, d_first, pred);
+
+Операции сортировки
+---
+*** sort()
+sort(first, last) - сортировка элементов в диапазоне [first, last) в порядке возрастания.
+sort(first, last, pred) - для изменения порядка сортировки необходимо использовать предикат.
+sort(first, last, greater<int>())
+
+Операции двоичного поиска (на упорядоченных диапазонах)
+---
+*** binary_search()
+binary_search(first, last, value) - проверяет, содержится ли в отсортированном диапазоне [first, last) элемент, равный value.
+
+Операции над множествами (на упорядоченных диапазонах)
+---
+*** merge() Объединяет два отсортированных диапазона [first1, last1) и [first2, last2)
+в один упорядоченный диапазон с началом в d_first.
+merge(first1, last1, first2, last2, d_first);
+merge(first1, last1, first2, last2, d_first, pred);
+
+*** includes() Возвращает true, если каждый элемент из упорядоченного диапазона [first2, last2)
+находится в упорядоченном диапазоне [first, last). Также возвращает true, если [first2, last2) пуст.
+includes(first1, last1, first2, last2);
+includes(first1, last1, first2, last2, pred);
+
+Операции отношений
+---
+*** max_element() Возвращает итератор, указывающий на наибольший объект в диапазоне [first, last).
+max_element(first, last)
+
+*** min_element() Возвращает итератор, указывающий на наименьший объект в диапазоне [first, last).
+min_element(first, last)
+
+*** minmax_element() Находит наибольший и наименьший элемент в диапазоне [first, last).
+Возвращается тип pair – пара, состоящая из итератора минимального элемента в качестве
+первого элемента пары и итератора максимального элемента в качестве второго элемента пары.
+Если имеется несколько элементов равных min, то возвращается итератор на первый такой элемент.
+Если имеется несколько элементов равных max, то возвращается итератор на последний такой элемент.
+minmax_element(first, last);
+
+http://www.cplusplus.com/reference/algorithm/
+
+*/
+
+#include <iostream>
+#include <array>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main(int argc, char * argv[])
+{
+	// Использование алгоритма for_each
+	array<int, 10> mas = { 0,1,2,3,4,5,6,7,8,9 };
+	int sum = 0;
+	for_each(mas.begin(), mas.end(), [&sum](int &r) {
+		sum = sum + r;
+		cout << r << " ";
+	});
+	cout << endl << "Sum = " << sum << endl << endl;
+
+	// Использование алгоритма и итератора
+	copy(mas.begin(), mas.end(), ostream_iterator<int>(cout, " "));
+	cout << endl << endl;
+
+	// Использование алгоритма copy
+	vector<pair<int, string>> vMas = { {0, "zero"}, {1, "first"}, {2, "second"}, {3, "third"}, {4, "fourth"} };
+	vector<pair<int, string>> vCopy(5);
+	copy(vMas.begin(), vMas.end(), vCopy.begin());
+	for (auto elem : vCopy)
+	{
+		cout << elem.second.c_str() << endl;
+	}
+	cout << endl << endl;
+
+	// Использование алгоритма sort
+	sort(vCopy.begin(), vCopy.end(), [](pair<int, string> &a, pair<int, string> &b) {return a.first > b.first; });
+	for (auto elem : vCopy)
+	{
+		cout << elem.second.c_str() << endl;
+	}
+	cout << endl << endl;
+
+	return 0;
+}

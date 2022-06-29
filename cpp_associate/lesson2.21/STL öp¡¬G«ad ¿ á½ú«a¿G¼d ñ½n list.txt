@@ -1,0 +1,36 @@
+/*
+http://www.cplusplus.com/reference/iterator/
+*/
+
+struct MyStruct
+{
+	int value;
+	string str;
+};
+
+bool compareMyStruct(const MyStruct& a, const MyStruct& b) {
+	return a.value < b.value;
+}
+
+int main(int argc, char * argv[])
+{	
+	list<MyStruct> my_list{ MyStruct{7, "seventh"}, MyStruct{3, "third"}, MyStruct{4, "fourth"}, MyStruct{9, "ninth"}, MyStruct{5, "fifth"}, MyStruct{2, "second"}, MyStruct{6, "sixth"}, MyStruct{1, "first"}, MyStruct{8, "eighth"} };
+
+	my_list.sort(compareMyStruct);
+	for (auto elem : my_list)
+	{
+		cout << elem.str << " ";
+	}
+	cout << endl;
+
+	my_list.sort([](const MyStruct& a, const MyStruct& b) {return a.value > b.value; });
+	for (auto elem : my_list)
+	{
+		cout << elem.str << " ";
+	}
+	cout << endl;
+
+	system("pause");
+
+	return 0;
+}

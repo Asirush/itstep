@@ -1,0 +1,66 @@
+/*
+
+http://www.solarix.ru/for_developers/cpp/stl/stl.shtml
+
+Функторы
+---
+Функторы (их еще называют объект-функциями) - конструкция,
+которая предоставляет возможность использовать объект как функцию.
+
+Предикаты
+---
+Предикаты - подмножество функторов, в которых тип возвращаемого
+значения operator() bool.
+
+Функциональные адаптеры
+---
+Основные унарные и бинарные функциональные объекты, необходимые для
+сравнения, уже включены в STL.
+
+Лямбда-функции
+---
+Лямбда-функции - это просто синтаксический сахар для анонимных функторов.
+*/
+
+
+template <typename T>
+class Mult
+{
+public:
+	T operator()(const T &t1, const T &t2) const
+	{
+		return t1 * t2;
+	}
+};
+
+int main(int argc, char * argv[])
+{
+	// Использование функтора
+	auto result = Mult<int>();
+	cout << result(10, 20) << endl;
+
+	// Помещение лямбда в переменную
+	auto r = [](const int a, const int b) { return a * b; };
+	cout << r(10, 20) << endl;
+
+	// Определение возвращаемого типа
+	auto dbl = [](const int a, const int b)->double	{ return static_cast<double>(a / b); };
+	cout << dbl(10, 20) << endl;
+
+	/*
+	"Захват" переменных (Замыкание)
+	[&epsilon] захват по ссылке
+	[&] захватывает все переменные, используемые в лямбда по ссылке
+	[=] фиксирует все переменные, используемые в лямбда по значению
+	[&, epsilon] захватывает переменные, такие как[&], но epsilon по значению
+	[=, &epsilon] захватывает переменные, такие как[=], но epsilon по ссылке
+	*/
+	int first = 0;
+	auto locking = [&first](const int second) {first = second; return; };
+	locking(10);
+	cout << first << endl;
+
+	system("pause");
+
+	return 0;
+}
