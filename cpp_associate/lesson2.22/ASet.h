@@ -6,6 +6,7 @@ class ASet
 {
     int start, end;
 
+
 public:
     ASet(int a, int b);
     ASet(int b);      // a по умолчанию 0

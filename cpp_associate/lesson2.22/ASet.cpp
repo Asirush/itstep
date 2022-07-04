@@ -22,6 +22,11 @@ void ASet::incl(int number)
 	}
 }
 
+void ASet::excl(int number)
+{
+	start = number++;
+}
+
 bool ASet::contain(int number)
 {
 	bool contain;
