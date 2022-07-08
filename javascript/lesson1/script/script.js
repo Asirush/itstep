@@ -80,8 +80,15 @@ let result = number.toString();
 alert(result[1]);*/
 
 //line convert 12345 to 51234
+/*
 let number = parseInt(prompt('number', 12345));
 let number1 = number % 10;
 let number2 = Math.trunc(number / 10);
 number = number1.toString() + number2.toString();
-alert(number);
+alert(number);*/
+
+//salary counter
+let salary;
+const summ = parseInt(prompt('summ'));
+salary = 250 + summ * 0.1;
+alert(salary);
