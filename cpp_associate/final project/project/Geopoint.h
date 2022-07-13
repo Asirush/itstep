@@ -1,9 +1,10 @@
 ﻿#pragma once
+#include "timer.h"
 
 class Geopoint {
 public:
-    Geopoint(double _lat, double _lng, double _elev = 0)
-        : lat(_lat), lng(_lng), elev(_elev) {}
+    Geopoint(double _lat, double _lng, double _elev, int a, int b, int c)
+        : lat(_lat), lng(_lng), elev(_elev), geopoint_time(a,b,c) {}
 
     // Широта
     double latitude() const { return lat; }
@@ -19,4 +20,5 @@ public:
 
 private:
     double lat, lng, elev;
+    timer geopoint_time;
 };
