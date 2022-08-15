@@ -1,0 +1,16 @@
+.net is a development, administration and scalebility tool
+
+clr - общеязыковая среда исполнения используемая в .net
+cts (common type specification) - стандарт описания 
+cls (common Language Specification) - спецификация языка
+
+все языки(perl, cH, perl, c++) при компиляции образуют бинарные файлы по инструкции IL и метаданные (.dll, .exe) 
+JIT compiller - sjt in time compiller
+
+при использовании .net файлы собираются в IL(internal language) и позже при запуске exe файла пересобирает файл с подтягиванием зависимостей через jit
+
+
+##### управляемый код и не управляемый (managed code)
+.net добавляет код в "неуправляемый" и позже при запуске jit компилятора код собирается как неупровляемый, к ним относятся с и с++
+с№ считается управляемым.
+
