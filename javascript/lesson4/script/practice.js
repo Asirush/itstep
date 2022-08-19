@@ -34,3 +34,37 @@ function calc(num1, sign, num2){
 console.log(calc(2, "+", 5));
 
 // task 4
+function natural(number)
+{
+    const array = [];
+
+for(let i = number; i > 0; i--){
+    if(number%i === 0) array.push[i];
+}
+    return array.length > 2 ? "not simple" : "simple";
+}
+
+console.log(natural(10));
+
+// task 5
+function table(number){
+    console.log(`####### ${number}`)
+    for(let i = 1; i <= 9; i++){
+        
+        console.log(`${number} * ${i} = ${number * i}`);
+        
+    }
+}
+//for(let i = 1; i <= 9; i++){table(i)}
+
+// task 6
+function deef(num1, num2){
+    let main = 0;
+    for(let i = 1; i <= num1+num2; i++){
+        if(i*num2 <= num1) main++; 
+    }
+    console.log(`main: ${main}`);
+    return num1 - (main * num2);
+}
+
+console.log(deef(9, 2));
