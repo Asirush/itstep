@@ -68,3 +68,20 @@ function deef(num1, num2){
 }
 
 console.log(deef(9, 2));
+
+// task 7
+function summ(num1=0, num2=0, num3=0, num4=0, num5=0){
+    return num1+num2+num3+num4+num5;
+}
+console.log(summ(2,3,6));
+
+// task 8
+function maximum(num1=0, num2=0, num3=0, num4=0, num5=0){
+    array = [num1, num2, num3, num4, num5];
+    let max = num1;
+    for(let i = 0; i < 5; i++){
+        if(array[i]>max) max = array[i];
+    }
+    return max;
+}
+console.log(maximum(2,3,6));
