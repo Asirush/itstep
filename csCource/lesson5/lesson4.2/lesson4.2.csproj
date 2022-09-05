@@ -10,12 +10,8 @@
 
   <ItemGroup>
     <None Remove="libs\" />
-    <None Remove="LiteDB" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="libs\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="LiteDB" Version="5.0.12" />
   </ItemGroup>
 </Project>

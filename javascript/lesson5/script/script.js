@@ -68,8 +68,6 @@ class rectangle{
         this.topLeft[1] +=value;
         this.topRight[1] += value;
     }
-
-    
 }
 
 let getInfo = new rectangle(item);

@@ -1,0 +1,17 @@
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/bin/Debug/net6.0/lesson4.2
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/bin/Debug/net6.0/lesson4.2.deps.json
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/bin/Debug/net6.0/lesson4.2.runtimeconfig.json
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/bin/Debug/net6.0/lesson4.2.dll
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/bin/Debug/net6.0/lesson4.2.pdb
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/bin/Debug/net6.0/LiteDB.dll
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.csproj.AssemblyReference.cache
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.AssemblyInfoInputs.cache
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.AssemblyInfo.cs
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.csproj.CoreCompileInputs.cache
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.csproj.CopyComplete
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.dll
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/refint/lesson4.2.dll
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.pdb
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/lesson4.2.genruntimeconfig.cache
+/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/obj/Debug/net6.0/ref/lesson4.2.dll

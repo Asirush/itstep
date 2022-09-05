@@ -11,8 +11,7 @@ namespace lesson4._2.libs
         public Address UserAddres { get; set; }
         public string PhoneNumber { get; set; }
         public Account[] Accounts { get; set; }
-        public string Passwd { get; set; }
-        public char Gender { get; set; }
+        public string passd { get; set; }
 
         public string FullName
         {

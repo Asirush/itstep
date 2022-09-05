@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "La6aXKuLg9hpQyFSAnSGvaXIVEVBTFJTwguUhvUVob0gRi3LQGoXQ98krCUrXctXWS56U7NT/RHV5GVrPKEu8g==",
+  "dgSpecHash": "pm5y87e5oCiLwAVCy0f4hTPqaFj6lqf1jTgkyyqhcoS0/uLvH5lhtays9PCWeqstY9mtdDQwXoxGguUtnQhJgQ==",
   "success": true,
   "projectFilePath": "/Users/asirush/Documents/itstep/csCource/lesson4.2/lesson4.2/lesson4.2.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/asirush/.nuget/packages/litedb/5.0.12/litedb.5.0.12.nupkg.sha512"
+  ],
   "logs": []
 }
