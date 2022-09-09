@@ -34,3 +34,22 @@ newString += ' not changed!';
 let array2 = ['1', '2', '3'];
 let newArray2 = [...array2]
 
+// lowercase and upercase
+let myString6 = "My String";
+console.log(myString6.toLowerCase());
+console.log(myString6.toUpperCase());
+
+// how to remove sumbols from string
+let myString7 = "Сьешь этих мягких французских булок, да выпей чаю";
+console.log(myString7.substring(5, 9));
+
+let array7 = myString7.split(' ');
+console.log(array7);
+
+// регулярные выражения - следует изучить самостоятельно
+
+let PhoneNumber = '    +7(707)268-47-36';
+let cleanNumber = PhoneNumber.trim(); // trim removes spaces, tabs, etc.
+console.log(PhoneNumber);
+console.log(cleanNumber);
+
