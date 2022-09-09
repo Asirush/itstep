@@ -1,3 +1,6 @@
 [submodule "csCource/lesson1/csCource/lesson1/Lesson01.SEP212"]
 	path = csCource/lesson1/csCource/lesson1/Lesson01.SEP212
 	url = git@github.com:YevgeniyGertsen/Lesson01.SEP212.git
+[submodule "csCource/csCource/KKB.Online"]
+	path = csCource/csCource/KKB.Online
+	url = git@github.com:YevgeniyGertsen/KKB.Online.git

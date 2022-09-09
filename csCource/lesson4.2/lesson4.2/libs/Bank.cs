@@ -7,8 +7,8 @@ namespace lesson4._2.libs
     {
         public Bank(string Path)
         {
-            ClientList = new Client[2];
-            ClientList[0] = new Client()
+            Clients = new Client[2];
+            Clients[0] = new Client()
             {
                 Name = "Assir",
                 Surname = "Abdukhalikov",
@@ -25,19 +25,22 @@ namespace lesson4._2.libs
         {
             try
             {
-                using (var db = new LiteDatabase(@"$HOME/Documents/itstep/csCourse/lesson6/database.db"))
+                if (GetClient(user.IIN) != null)
                 {
-                    var users = db.GetCollection<Client>("Users");
-
-                    if (GetClient(user.IIN) != null)
-                    {
-                        message = "Client is already exist";
-                        return false;
-                    }
-                    else { users.Insert(user); }
+                    message = "Client is already exist";
+                    return false;
                 }
-                message = "Succsessful";
-                return true;
+                else {
+                    using (var db = new LiteDatabase(@"$HOME/Documents/itstep/csCourse/lesson6/database.db"))
+                    {
+                        var users = db.GetCollection<Client>("Users");
+                        users.Insert(user);
+                        message = "Succsessful";
+                        return true;
+                    }
+
+                }
+                
             }
             catch (Exception ex)
             {
