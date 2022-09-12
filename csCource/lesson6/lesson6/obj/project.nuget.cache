@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "mLu4/ujHBNj5UwPSBPLBRuoUPwuXxUS6SA4OHRhRZQvYND4jagH3D0fH2vyoy0qAg3G3IeZZ9rRFqwT9JARG2w==",
+  "success": true,
+  "projectFilePath": "/Users/asirush/Documents/itstep/csCource/lesson6/lesson6/lesson6.csproj",
+  "expectedPackageFiles": [
+    "/Users/asirush/.nuget/packages/netstandard.library.ref/2.1.0/netstandard.library.ref.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
