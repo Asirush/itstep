@@ -1,0 +1,15 @@
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ShopDatabase.csproj.AssemblyReference.cache
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ShopDatabase.GeneratedMSBuildEditorConfig.editorconfig
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ShopDatabase.AssemblyInfoInputs.cache
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ShopDatabase.AssemblyInfo.cs
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ShopDatabase.csproj.CoreCompileInputs.cache
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/bin/Debug/net6.0/ShopDatabase
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/bin/Debug/net6.0/ShopDatabase.deps.json
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/bin/Debug/net6.0/ShopDatabase.runtimeconfig.json
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/bin/Debug/net6.0/ShopDatabase.dll
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/bin/Debug/net6.0/ShopDatabase.pdb
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ShopDatabase.dll
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/refint/ShopDatabase.dll
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ShopDatabase.pdb
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ShopDatabase.genruntimeconfig.cache
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/Debug/net6.0/ref/ShopDatabase.dll

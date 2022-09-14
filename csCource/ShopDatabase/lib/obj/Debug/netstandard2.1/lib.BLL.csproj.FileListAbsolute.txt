@@ -1,0 +1,5 @@
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/obj/Debug/netstandard2.1/lib.BLL.csproj.AssemblyReference.cache
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/obj/Debug/netstandard2.1/lib.BLL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/obj/Debug/netstandard2.1/lib.BLL.AssemblyInfoInputs.cache
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/obj/Debug/netstandard2.1/lib.BLL.AssemblyInfo.cs
+/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/obj/Debug/netstandard2.1/lib.BLL.csproj.CoreCompileInputs.cache

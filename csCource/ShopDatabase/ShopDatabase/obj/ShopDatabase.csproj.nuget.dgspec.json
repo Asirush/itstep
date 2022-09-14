@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/ShopDatabase.csproj": {}
+  },
+  "projects": {
+    "/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/lib.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/lib.BLL.csproj",
+        "projectName": "lib.BLL",
+        "projectPath": "/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/lib.BLL.csproj",
+        "packagesPath": "/Users/asirush/.nuget/packages/",
+        "outputPath": "/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/asirush/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "LiteDB": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/ShopDatabase.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/ShopDatabase.csproj",
+        "projectName": "ShopDatabase",
+        "projectPath": "/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/ShopDatabase.csproj",
+        "packagesPath": "/Users/asirush/.nuget/packages/",
+        "outputPath": "/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/asirush/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/lib.BLL.csproj": {
+                "projectPath": "/Users/asirush/Documents/itstep/csCource/ShopDatabase/lib/lib.BLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HNgo7j4gdPmsoqi0lwXxtZXdxn4rylODom6Y3BXe5PX3LOKS0B/Lv6MjGWxolz6+qTec7HxWc+sJnicy+h9gPQ==",
+  "success": true,
+  "projectFilePath": "/Users/asirush/Documents/itstep/csCource/ShopDatabase/ShopDatabase/ShopDatabase.csproj",
+  "expectedPackageFiles": [
+    "/Users/asirush/.nuget/packages/litedb/5.0.12/litedb.5.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
