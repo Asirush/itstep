@@ -93,10 +93,32 @@ function task8(){
 
 //task 9
 function task9(){
-
+    let answer1, answer2, answer3, points = 0;
+    alert("What is docker?");
+    
 }
 
 //task 10
 function task10(){
-    
+    let Month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let day, month, year;
+        if (day>Month[month-1]||month>12)
+        {
+            console.log("error");
+            return 0;
+        }
+        if (day<Month[month-1]||(month==2&&year%4==0))
+            day++;
+        else if (month==12&&day==31)
+        {
+            year++;
+            day=1;
+            month=1;
+        }
+        else
+        {
+            month++;
+            day=1;
+            }
+        console.log(`${day} ${month} ${year}`)
 }
