@@ -1,0 +1,5 @@
+/Users/asirush/Documents/itstep/csCource/Homeworks/homeworkArraysStrings/homework3/homework3/obj/Debug/net6.0/homework3.csproj.AssemblyReference.cache
+/Users/asirush/Documents/itstep/csCource/Homeworks/homeworkArraysStrings/homework3/homework3/obj/Debug/net6.0/homework3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/asirush/Documents/itstep/csCource/Homeworks/homeworkArraysStrings/homework3/homework3/obj/Debug/net6.0/homework3.AssemblyInfoInputs.cache
+/Users/asirush/Documents/itstep/csCource/Homeworks/homeworkArraysStrings/homework3/homework3/obj/Debug/net6.0/homework3.AssemblyInfo.cs
+/Users/asirush/Documents/itstep/csCource/Homeworks/homeworkArraysStrings/homework3/homework3/obj/Debug/net6.0/homework3.csproj.CoreCompileInputs.cache
