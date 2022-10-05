@@ -7,6 +7,7 @@ namespace ConsoleApp{
         delegate int Operation(int x, int y);
 
         static void Main(string[] args){
+////////////////////////////////////////////////
             // Class1 cl = new Class1();
 
             // if(DateTime.Now.Hour < 12){
@@ -15,11 +16,18 @@ namespace ConsoleApp{
             // else{
             //     cl.ShowMessage(GoodEvening);
             // }
+/////////////////////////////////////////////////
+            // Operation del = new Operation(Add);
+            // int result = del.Invoke(4, 5);
 
-            Operation del = new Operation(Add);
-            int result = del.Invoke(4, 5);
+            // ShowMessage(GoodMorning);
+/////////////////////////////////////////////////
+            Account account = new Account(200,6);
+            account.RegisterHandler(PrintMessage);
+        }
 
-            ShowMessage(GoodMorning);
+        private static void PrintMessage(string message){
+            Console.Writeline(message);
         }
 
         private static void ShowMessage(GetMessage delM){
