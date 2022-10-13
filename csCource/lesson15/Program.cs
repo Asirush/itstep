@@ -69,5 +69,14 @@ internal class Program{
         }
 
     }
+
+    public static void PrintDirNames(string path){
+        DirectoryInfo dir = new DirectoryInfo(path);
+        foreach (DirectoryInfo item in dir.GetDirectories())
+        {
+            Console.WriteLine($"{dir.FullName}");
+            PrintDirNames(item.FullName);
+        }
+    }
 }
 }
