@@ -3,7 +3,6 @@ $(function() {
         $.get(`https://picsum.photos/v2/list?page=1&limit=3`, function(response) {  
             //console.log( response.download_url)
             let items = response;
-
             $.each(items, function(index, value) {
                $('#items1').append(createItem(value));
             }) 
@@ -18,6 +17,43 @@ $(function() {
       </div>
        `
     }
-    
+    let posts = [];
+    function getPost() {
+        $.get(`https://dummyjson.com/posts?limit=3`, function(response) {  
+            posts = response.posts;
+            aCreate();
+        });
+    }
+    getPost();
+    let angryMan = '/img/duck.jpg';
+    let photos = [];
+   function getPhoto() {
+        for(let i = 0; i < 2; i++){
+            photos.push(`https://picsum.photos/id/${i}/500/500`);
+        }
+        photos.push(angryMan);
+    }
+    getPhoto();
+    function createPosts(title, body, photo) {
+        return `
+        <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">${title}</h2>
+            <p class="lead">${body}</p>
+        </div>
+        <div class="col-md-5">
+            <img src="${photo}"/>
+        </div>
+        </div>
+        <hr class="featurette-divider">
+    `
+    }
+    function createPosts2(){
+       for(let i = 0; i < posts.length; i++){
+        $('#posts').append(createPosts(posts[i].title, posts[i].body, photos[i]));
+       }
+    }
+    function aCreate(){       
+        createPosts2();
+    }
 });
-
