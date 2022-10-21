@@ -42,7 +42,7 @@ $(function() {
             <p class="lead">${body}</p>
         </div>
         <div class="col-md-5">
-            <img src="${photo}"/>
+            <img class="lazy" data-original="${photo}" width="500" height="500">
         </div>
         </div>
         <hr class="featurette-divider">
@@ -52,6 +52,8 @@ $(function() {
        for(let i = 0; i < posts.length; i++){
         $('#posts').append(createPosts(posts[i].title, posts[i].body, photos[i]));
        }
+       
+    $("img.lazy").lazyload();
     }
     function aCreate(){       
         createPosts2();
