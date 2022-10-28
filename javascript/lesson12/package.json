@@ -3,6 +3,7 @@
     "bootstrap": "^5.2.2",
     "jquery": "^3.6.1",
     "jquery-lazyload": "^1.9.7",
-    "jquery.cookie": "^1.4.1"
+    "jquery.cookie": "^1.4.1",
+    "lazyload": "^2.0.0-rc.2"
   }
 }

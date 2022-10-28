@@ -1,5 +1,5 @@
 $(function() {
-    $.cookie('username', 'Assir Abdukhalikov');
+    $.cookie('username', 'Assir Abdukhalikov', {expires: 7});
     console.log($.cookie());
     function getImage() {
         $.get(`https://picsum.photos/v2/list?page=1&limit=3`, function(response) {  
